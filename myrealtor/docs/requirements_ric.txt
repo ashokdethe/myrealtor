@@ -1,0 +1,49 @@
+Real State Web App
+------------------
+
+Suggested name: MyRealtor
+
+The main goal of this web app is to demonstrate integration with different Systems. It will try to use various techniques to achieve Systems integration.
+This system will focus in interacting with "real" services like Google geocode service and Goolge maps and with simulated systems, that it will be devoloped as part of this project.
+
+It will use virtual (desired only) and materialize methods to allow systems communications.
+
+Product Functions
+----------------
+
+This system shall allow an user to login to access the transactions features, but it also shall allow users to execute real state properties searches without requiring a login.
+
+This system shall have a admin user responsible to manage other users in the system. An admin user will be responsible for edit, create, delete regular users.
+
+Any user can search for properties in this system. The search input should be simple and it will allow the user to have easy access to the results. The required search feature should access materialized data from previous registered providers. It's desired (but not required) to access virtual data as well. Both data should be merged for the user.
+
+This Real State Web App will allow other real state providers to register in the system. Optional feature is to validate the SSN against some FICO type institution. This server should be simulated as well and developed as part of this project.
+Basically these new providers will enter new properties in the System data storage, so the integration will be materialized.
+It's a desired feature to allow search in real providers, like Craigslist or apartament.com.
+
+Besides search, this system should interact with other application in a conversation way. It will allow for the user to make monthly rental payment.
+After the payment is finalized, the system should communicate with a third system about the success or failure.
+It will be necessary to develop a simple Apartment Management app to interact with this Real State Web App. For this integration the communication will have more than just one interaction between systems.
+For this feature login will be required
+
+This system should provide for the user access to previous rental payment.
+
+The system shall allow an user provider to manage his/her properties. The initial goal will be for rental properties only. He will be able to change monthly price, deposit, rules (pet allowed, ...), status (occupied or not), address.
+
+The system will have a review session. This session will allow any user to post comments about properties in the market.
+
+The system will have a logout function
+
+Optional Functions
+------------------
+
+Manage selling properties.
+
+Mortgage rate based on the current rate provided by a bank or another credit institution. The system should display for the user how much he would pay for a 15 and 30 years mortgage
+
+The system shall provide to the registered user a "shopping cart" option for the rental properties. This should be more like "my rental properties candidates".
+Then the system should allow the user to make comparison between these properties, using external services to retrieve statistical data like area crime rate, school rates, avg Weather conditions for the selected address.
+
+Address verification and plotting location on Google maps. The system should display for the user the houses he is interested on the map.
+
+(See yahoo services for more example of external services) 

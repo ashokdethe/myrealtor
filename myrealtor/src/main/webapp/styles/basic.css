@@ -1,0 +1,207 @@
+#navlist
+{
+width: 100%;
+padding: 3px 0;
+margin-left: 0;
+border-bottom: 1px solid #778;
+font: bold 12px Verdana, sans-serif;
+}
+
+#navlist li
+{
+list-style: none;
+margin: 0;
+display: inline;
+}
+
+#navlist li a
+{
+padding: 3px 0.5em;
+margin-left: 3px;
+border: 1px solid #778;
+border-bottom: none;
+background: #DDE;
+text-decoration: none;
+}
+
+#navlist li a:link { color: #448; }
+#navlist li a:visited { color: #667; }
+
+#navlist li a:hover
+{
+color: #000;
+background: #AAE;
+border-color: #227;
+}
+
+/*
+#navlist li a#current
+{
+background: white;
+border-bottom: 1px solid white;
+}
+*/
+
+
+	a, a:visited, a:link, a:active  {				
+		background-color: transparent;
+		text-decoration: none;
+		font-weight: bold;
+	}
+	
+	a:hover {	
+		color: yellow;
+		/*color: white;		
+		background-color: #65a242;*/		
+		text-decoration: none;		
+		font-weight: bold;
+	}
+	
+	
+	body.spring {
+		background-color: #9cac7c;		
+	}
+
+    form div, 
+    form p {
+    	padding: 0px;
+		margin: 0 0 .5em 0;
+    }
+    
+	#header.spring { 
+		margin: 0 0 1em 0;
+        padding: 0px 0px;
+		background-color : #101043;
+	}
+	
+	#branding.spring {
+		float: none;
+        width: 100%;
+        margin: 10px 0 0 0;
+        padding: 0 0 0 0;
+        text-align: none;
+        background: white;
+    }
+    
+    #welcome {
+    	background-color :  #101043;
+    	padding: 10px 10px;
+    }
+    
+    #welcome div.left {
+    	float: left;
+    } 
+    
+    #welcome div.right {
+    	float: right;
+    }
+        
+	#content.spring {
+		min-height: 350px;
+		margin-bottom: 0px;
+		background-color: #FFFFFF;
+	}
+
+    #content.spring input[type="submit"], input[type="button"], button {
+		font-size: 1em;
+    	font-weight: bold;
+    	color: #fff;
+		background: blue;
+		border-style: none;
+        padding: 2px 2px 2px 2px;
+	}
+	
+
+    
+    
+    #footer.spring {
+    	/*padding: 25px 0;*/
+    	background-color :  #101043;
+    	border-top: 1px solid #C3BBB6;
+    }
+    
+    /*
+    #footer.spring img {
+    	float: center;
+    	padding-right: 20px;
+    }
+    */
+
+	.errors {
+		font-weight: bold;
+		text-align: left;
+		color: #600;
+	}
+	
+	.errors ul {
+		list-style: none;
+	}
+	
+
+
+	.section {
+		text-align: left;
+		width: 720px;
+		margin-bottom: 5px;
+		float: center;
+		margin-left: 10px;
+	}
+    
+	.field {
+		float: left;
+		min-width: 700px;
+	}
+	
+	.field .label {
+		float: left;
+		padding-top: 5px;
+		padding-right: 5px;
+		font-weight: bold;
+		width: 150px;
+		text-align: right;
+	}
+	
+	.field .input {
+		float: left;
+		width: 250px;
+		text-align: left;
+	}
+
+	.field .output {
+		float: left;
+		width: 250px;
+		padding-top: 5px;
+		text-align: left;
+	}
+	
+	.buttonGroup {
+		clear: both;
+		text-align: right;
+	}
+	
+	.buttonGroup input[type="submit"], .buttonGroup input[type="button"], .buttonGroup button, .buttonGroup a {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
+	.summary {
+		width: 100%;
+		border: 1px solid #414f23;
+		border-collapse: collapse;
+	}
+	
+	.summary thead th {
+		border-left: 1px solid #414f23;
+		background: #fff url(../images/th.bg.gif) 0 100% repeat-x;
+		border-bottom: 1px solid #414f23;
+		padding: 6px;
+		text-align: left;
+		font-size: small;
+	}
+    
+    .summary tbody td {
+		border-left: 1px solid #9cac7c;
+		padding: 4px;
+		border-bottom: 1px solid #9cac7c;
+		font-size: 8pt;
+	}
