@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<persistence-context/>
+	
+	 
+	<var name="user" class="com.myrealtor.domain.User"/>
+	
+	<on-start>																						   
+		<evaluate expression="userService.findAllSecurityQuestion()" result="flowScope.securityQuestionList" />		
+	</on-start>
+  
+	
+	<view-state id="userForm" model="user" >
+		<binder>
+			<binding property="question" required="true" converter="securityQuestionConverter" />
+			<binding property="firstName" required="true" />
+			<binding property="lastName" required="true" />
+			<binding property="username" required="true" />
+			<binding property="email" required="true" />
+			<binding property="password" required="true" />
+			<binding property="confirmPwd" required="true" />			
+			<binding property="securityAnswer" required="true" />			
+		</binder>
+		<transition on="proceed" to="userAddressForm"  >
+		<!-- 
+			<evaluate expression="user.password.equals(user.confirmPwd)"></evaluate>
+		-->
+		</transition>
+		<transition on="cancel" to="cancel" bind="false" /> 
+	</view-state>
+	
+	
+	
+	
+	<view-state id="userAddressForm" model="user">
+		<binder>			
+			<binding property="address1" required="true" />
+			<binding property="address2" required="false" />
+			<binding property="city" required="true" />
+			<binding property="state" required="true" />
+			<binding property="zip" required="true" />			
+			<binding property="phone" required="false" />
+		</binder>
+		<transition on="confirm" to="userEnrollmentSuccess">
+			<evaluate expression="userService.store(user)" result="flowScope.user" />
+		</transition>
+		<transition on="cancel" to="cancel" bind="false" />
+	</view-state>
+	
+	
+	<!-- 
+	<end-state id="userConfirmed" commit="true" view="externalRedirect:servletRelative:/login" >		
+	</end-state>
+	 -->
+	<end-state id="userEnrollmentSuccess" commit="true" view="userEnrollmentSuccess">		
+	</end-state>	 
+
+	<end-state id="cancel" view="externalRedirect:servletRelative:/login" />
+	
+			
+</flow>
