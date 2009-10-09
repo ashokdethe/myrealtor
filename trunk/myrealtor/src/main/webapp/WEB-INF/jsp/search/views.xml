@@ -9,5 +9,9 @@
 	<definition name="search/index" extends="standardLayout">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
 	</definition>
+	
+	<definition name="jsp/search" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
+	</definition>
 
 </tiles-definitions>
