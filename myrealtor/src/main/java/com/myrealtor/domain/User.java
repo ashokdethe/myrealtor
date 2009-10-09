@@ -200,6 +200,7 @@ public class User extends BaseEntity {
 	}
 
 	public void validatePassword(Errors errors) {
+		//test
 		if ( password == null || confirmPwd == null ) {
 			errors.rejectValue("password", "", "Password or Confirm Password cannot be null!");			
 		} else if (! password.equals(confirmPwd)) {			
