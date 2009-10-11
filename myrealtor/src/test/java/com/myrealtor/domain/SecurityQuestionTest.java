@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.myrealtor.BasicTest;
+import com.myrealtor.domain.beans.SecurityQuestion;
 
 
 public class SecurityQuestionTest {

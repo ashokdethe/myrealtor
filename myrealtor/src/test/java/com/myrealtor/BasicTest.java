@@ -16,9 +16,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.orm.jpa.JpaTransactionManager;
 
-import com.myrealtor.domain.BaseEntity;
 import com.myrealtor.domain.SecurityQuestionTest;
 import com.myrealtor.domain.UserTest;
+import com.myrealtor.domain.beans.BaseEntity;
 
 public class BasicTest {
 

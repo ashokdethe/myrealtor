@@ -9,8 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.myrealtor.domain.BaseEntity;
-import com.myrealtor.domain.User;
+import com.myrealtor.domain.beans.BaseEntity;
+import com.myrealtor.domain.beans.User;
 import com.myrealtor.service.UserService;
 
 

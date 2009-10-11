@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myrealtor.domain.SecurityQuestion;
-import com.myrealtor.domain.User;
+import com.myrealtor.domain.beans.SecurityQuestion;
+import com.myrealtor.domain.beans.User;
 
 
 @Service("userService")

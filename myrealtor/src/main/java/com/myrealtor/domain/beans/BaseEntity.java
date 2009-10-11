@@ -1,4 +1,4 @@
-package com.myrealtor.domain;
+package com.myrealtor.domain.beans;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -23,7 +23,7 @@ import org.apache.commons.logging.LogFactory;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 	
-	public static final String CODE_VERSION = "0.0.1";
+	public static final String CODE_VERSION = "0.0.2";
 	
 	@Transient
 	protected final Log log = LogFactory.getLog(getClass());

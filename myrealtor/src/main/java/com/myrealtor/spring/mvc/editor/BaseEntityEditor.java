@@ -5,7 +5,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import com.myrealtor.domain.BaseEntity;
+import com.myrealtor.domain.beans.BaseEntity;
 
 
 public class BaseEntityEditor extends PropertyEditorSupport {
