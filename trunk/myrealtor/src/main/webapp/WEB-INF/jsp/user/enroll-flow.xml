@@ -6,7 +6,7 @@
 	<persistence-context/>
 	
 	 
-	<var name="user" class="com.myrealtor.domain.User"/>
+	<var name="user" class="com.myrealtor.domain.beans.User"/>
 	
 	<on-start>																						   
 		<evaluate expression="userService.findAllSecurityQuestion()" result="flowScope.securityQuestionList" />		

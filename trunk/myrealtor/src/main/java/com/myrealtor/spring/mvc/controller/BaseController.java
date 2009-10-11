@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.web.context.request.WebRequest;
 
-import com.myrealtor.domain.User;
+import com.myrealtor.domain.beans.User;
 import com.myrealtor.service.UserService;
 
 public class BaseController {

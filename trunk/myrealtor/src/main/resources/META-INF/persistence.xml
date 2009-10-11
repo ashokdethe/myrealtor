@@ -6,16 +6,20 @@
    <persistence-unit name="myrealtorDatabase">
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       
-      <class>com.myrealtor.domain.BaseEntity</class>
-      <class>com.myrealtor.domain.User</class>      
-      <class>com.myrealtor.domain.Authority</class>
-      <class>com.myrealtor.domain.Home</class>
-      <class>com.myrealtor.domain.Address</class>      
+      
+      <class>com.myrealtor.domain.beans.Address</class> 
+      <class>com.myrealtor.domain.beans.ApartmentComplex</class>           
+      <class>com.myrealtor.domain.beans.Authority</class>
+      <class>com.myrealtor.domain.beans.BaseEntity</class>
+      <class>com.myrealtor.domain.beans.Apartment</class>
+      <class>com.myrealtor.domain.beans.Provider</class>      
+      <class>com.myrealtor.domain.beans.User</class>      
       
       <properties>
       	 <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
-      	 <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+      	 <property name="hibernate.hbm2ddl.auto" value="create" />
       	 <!-- 
+      	 <property name="hibernate.hbm2ddl.auto" value="create-drop" />
       	 
       	 <property name="hibernate.show_sql" value="true"/>
       	 

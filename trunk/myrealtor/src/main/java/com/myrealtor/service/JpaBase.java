@@ -12,7 +12,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myrealtor.domain.BaseEntity;
+import com.myrealtor.domain.beans.BaseEntity;
 
 public class JpaBase implements BaseService { 
 

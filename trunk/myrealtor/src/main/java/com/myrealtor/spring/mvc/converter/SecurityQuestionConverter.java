@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.binding.convert.converters.StringToObject;
 
-import com.myrealtor.domain.SecurityQuestion;
+import com.myrealtor.domain.beans.SecurityQuestion;
 import com.myrealtor.service.BaseService;
 
 

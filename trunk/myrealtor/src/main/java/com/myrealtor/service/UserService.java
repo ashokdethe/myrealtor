@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myrealtor.domain.SecurityQuestion;
-import com.myrealtor.domain.User;
+import com.myrealtor.domain.beans.SecurityQuestion;
+import com.myrealtor.domain.beans.User;
 
 public interface UserService extends BaseService {
 

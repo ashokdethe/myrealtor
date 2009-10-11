@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 
-import com.myrealtor.domain.SecurityQuestion;
-import com.myrealtor.domain.User;
+import com.myrealtor.domain.beans.SecurityQuestion;
+import com.myrealtor.domain.beans.User;
 import com.myrealtor.spring.mvc.editor.BaseEntityEditor;
 
 @Controller 

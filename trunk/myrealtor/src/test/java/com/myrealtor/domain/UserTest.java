@@ -2,6 +2,7 @@
 package com.myrealtor.domain;
 
 import com.myrealtor.BasicTest;
+import com.myrealtor.domain.beans.User;
 
 public class UserTest {
 	

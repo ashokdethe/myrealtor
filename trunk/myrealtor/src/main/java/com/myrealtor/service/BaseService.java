@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import com.myrealtor.domain.BaseEntity;
+import com.myrealtor.domain.beans.BaseEntity;
 
 public interface BaseService extends Serializable {
 

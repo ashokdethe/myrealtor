@@ -24,7 +24,7 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.myrealtor.domain.BaseEntity;
+import com.myrealtor.domain.beans.BaseEntity;
 
 public class MyRealtorContextListener implements ServletContextListener {
 	
