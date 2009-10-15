@@ -50,7 +50,7 @@
 		<div id="welcome">
 			<div class="left"><a href="<c:url value="/" />">MyRealtor: the easiest way to find a new home!</a></div>
 			<div class="right">
-				<security:authorize ifAllGranted="ROLE_USER">
+				<security:authorize ifAnyGranted="ROLE_USER, ROLE_PROVIDER">
 					<c:if test="${pageContext.request.userPrincipal != null}">
 						Welcome ${pageContext.request.userPrincipal.name} |
 					</c:if>

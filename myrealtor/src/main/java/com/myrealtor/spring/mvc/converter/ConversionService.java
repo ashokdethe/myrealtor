@@ -1,11 +1,11 @@
-package com.myrealtor.service;
+package com.myrealtor.spring.mvc.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.convert.converters.StringToDate;
 import org.springframework.binding.convert.service.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
-import com.myrealtor.spring.mvc.converter.SecurityQuestionConverter;
+import com.myrealtor.service.UserService;
 
 @Service("customConversionService")
 public class ConversionService extends DefaultConversionService {
@@ -35,7 +35,7 @@ public class ConversionService extends DefaultConversionService {
 
 	
     protected void addCustomConverters() {     
-       //addConverter("cityConverter", new CityConverter(baseService) );
+       addConverter("authorityConverter", new AuthorityConverter() );
        addConverter("securityQuestionConverter", new SecurityQuestionConverter(baseService) );
        
 

@@ -12,9 +12,10 @@
 	<security:http auto-config="true"> 
 		<security:form-login login-page="/spring/login" login-processing-url="/spring/loginProcess" default-target-url="/spring/jsp/search" authentication-failure-url="/spring/login?login_error=1" />
 		<security:logout logout-url="/spring/logout" logout-success-url="/spring/logoutSuccess" />
-		<security:intercept-url pattern="/spring/myaccount/**" access="ROLE_USER" />
-		<security:intercept-url pattern="/spring/rent/**" access="ROLE_USER" />
-		<security:intercept-url pattern="/spring/providers/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/spring/myaccount/**" access="ROLE_USER, ROLE_PROVIDER" />
+		<security:intercept-url pattern="/spring/rent/**" access="ROLE_USER, ROLE_PROVIDER" />
+		<security:intercept-url pattern="/spring/tools/**" access="ROLE_USER, ROLE_PROVIDER" />
+		<security:intercept-url pattern="/spring/providers/**" access="ROLE_PROVIDER" />
 		
 	</security:http>
 	

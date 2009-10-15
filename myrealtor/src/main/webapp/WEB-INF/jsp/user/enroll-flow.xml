@@ -8,8 +8,13 @@
 	 
 	<var name="user" class="com.myrealtor.domain.beans.User"/>
 	
+	
 	<on-start>																						   
 		<evaluate expression="userService.findAllSecurityQuestion()" result="flowScope.securityQuestionList" />		
+		<evaluate expression="user.getAuthority().getAuthorityArray()" result="flowScope.authorityArray" />
+		<!-- 
+		<set name="authorityArray" value="user.authority.authorityArray"></set>
+		 -->
 	</on-start>
   
 	
@@ -19,15 +24,13 @@
 			<binding property="firstName" required="true" />
 			<binding property="lastName" required="true" />
 			<binding property="username" required="true" />
+			<binding property="authority" required="true" converter="authorityConverter" />
 			<binding property="email" required="true" />
 			<binding property="password" required="true" />
 			<binding property="confirmPwd" required="true" />			
 			<binding property="securityAnswer" required="true" />			
 		</binder>
-		<transition on="proceed" to="userAddressForm"  >
-		<!-- 
-			<evaluate expression="user.password.equals(user.confirmPwd)"></evaluate>
-		-->
+		<transition on="proceed" to="userAddressForm"  >					
 		</transition>
 		<transition on="cancel" to="cancel" bind="false" /> 
 	</view-state>
@@ -37,11 +40,11 @@
 	
 	<view-state id="userAddressForm" model="user">
 		<binder>			
-			<binding property="address1" required="true" />
-			<binding property="address2" required="false" />
-			<binding property="city" required="true" />
-			<binding property="state" required="true" />
-			<binding property="zip" required="true" />			
+			<binding property="address.address1" required="true" />
+			<binding property="address.address2" required="false" />
+			<binding property="address.city" required="true" />
+			<binding property="address.state" required="true" />
+			<binding property="address.zip" required="true" />			
 			<binding property="phone" required="false" />
 		</binder>
 		<transition on="confirm" to="userEnrollmentSuccess">
