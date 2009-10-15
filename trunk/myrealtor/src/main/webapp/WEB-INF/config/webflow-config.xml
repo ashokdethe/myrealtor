@@ -22,11 +22,6 @@
 	</webflow:flow-registry>
 	
 	
-	<!-- 
-	<bean id="customConversionService" class="com.myrealtor.service.ConversionService">
-		<constructor-arg index="0" ref="flightService"></constructor-arg>		
-	</bean>
-	 -->
 		
 	<!-- Plugs in a custom creator for Web Flow views -->
 	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" conversion-service="customConversionService" development="true" />

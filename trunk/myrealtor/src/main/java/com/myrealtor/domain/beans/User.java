@@ -11,17 +11,21 @@ import org.springframework.validation.Errors;
 
 
 @Entity
-@Table(name="Users")
+@Table(name="Users") 
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	
 	protected String username;
 	protected String firstName, lastName, phone, email, password;
-	protected String address1, address2, city, state, zip;
+	
+	//protected String address1, address2, city, state, zip;
 	
 	
 	protected short enabled = 1;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	protected Address address = new Address();
 	
 	@ManyToOne
 	protected SecurityQuestion question;
@@ -44,9 +48,16 @@ public class User extends BaseEntity {
 		this.authority = authority;
 		authority.setUsername( this.getUsername() );
 	}
+	
+	
+	public Address getAddress() {
+		return address;
+	}
 
-	
-	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -72,45 +83,45 @@ public class User extends BaseEntity {
 		this.lastName = lastName;
 	}
 
-	public String getAddress1() {
-		return address1;
-	}
-
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
-
-	public String getAddress2() {
-		return address2;
-	}
-
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
+//	public String getAddress1() {
+//		return address1;
+//	}
+//
+//	public void setAddress1(String address1) {
+//		this.address1 = address1;
+//	}
+//
+//	public String getAddress2() {
+//		return address2;
+//	}
+//
+//	public void setAddress2(String address2) {
+//		this.address2 = address2;
+//	}
+//
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	public String getState() {
+//		return state;
+//	}
+//
+//	public void setState(String state) {
+//		this.state = state;
+//	}
+//
+//	public String getZip() {
+//		return zip;
+//	}
+//
+//	public void setZip(String zip) {
+//		this.zip = zip;
+//	}
 
 	/**
 	 * @return the phone

@@ -21,4 +21,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/exception.jsp" />
 	</definition>
 	
+	<definition name="exception/accessDenied" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/accessDenied.jsp" />
+	</definition>
+	
 </tiles-definitions>

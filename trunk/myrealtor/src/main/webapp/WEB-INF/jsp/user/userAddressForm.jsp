@@ -15,10 +15,10 @@
 				<label for="address1">Address #1</label>
 			</div>
 			<div class="input">
-				<form:input path="address1" maxlength="40"/>
+				<form:input path="address.address1" maxlength="40"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "address1",
+						elementId : "address.address1",
 						widgetType : "dijit.form.ValidationTextBox",
 						widgetAttrs : { required : true }}));
 				</script>
@@ -31,10 +31,10 @@
 				<label for="address2">Address #2</label>
 			</div>
 			<div class="input">
-				<form:input path="address2" maxlength="40"/>
+				<form:input path="address.address2" maxlength="40"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "address2",
+						elementId : "address.address2",
 						widgetType : "dijit.form.ValidationTextBox",
 						widgetAttrs : { required : false }}));
 				</script>
@@ -47,10 +47,10 @@
 				<label for="city">City:</label>
 			</div>
 			<div class="input">
-				<form:input path="city" maxlength="40"/>
+				<form:input path="address.city" maxlength="40"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "city",
+						elementId : "address.city",
 						widgetType : "dijit.form.ValidationTextBox",
 						widgetAttrs : { required : true }}));
 				</script>
@@ -62,10 +62,10 @@
 				<label for="state">State:</label>
 			</div>
 			<div class="input">
-				<form:input path="state" maxlength="2"/>
+				<form:input path="address.state" maxlength="2"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "state",
+						elementId : "address.state",
 						widgetType : "dijit.form.ValidationTextBox",
 						widgetAttrs : { required : true }}));
 				</script>
@@ -78,10 +78,10 @@
 				<label for="zip">Zip:</label>
 			</div>
 			<div class="input">
-				<form:input path="zip" maxlength="40"/>
+				<form:input path="address.zip" maxlength="40"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "zip",
+						elementId : "address.zip",
 						widgetType : "dijit.form.ValidationTextBox",
 						widgetAttrs : { required : true }}));
 				</script>

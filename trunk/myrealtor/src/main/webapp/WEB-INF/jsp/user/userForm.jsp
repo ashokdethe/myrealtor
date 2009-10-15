@@ -104,6 +104,13 @@
 		
 		
 	<div class="field">
+	<div class="label">User Type:</div>
+	<div class="input"><form:select path="authority" items="${authorityArray}" />	</div>
+	</div>
+		
+		
+		
+	<div class="field">
 	<div class="label">Security Question:</div>
 	<div class="input"><form:select path="question" itemLabel="question" itemValue="id" items="${securityQuestionList}" />	</div>
 	</div>
