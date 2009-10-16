@@ -1,0 +1,53 @@
+Our Design:
+- Add data heterogenity
+
+
+
+
+
+Did the group document the motivation? does the motivation make sense?
+- Display information in a map. Easy to locate the apartment in some area.
+- Integrate different Apartament Providers in one website
+- Integrate external datasource, like google maps and http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4
+- Allow user to make payments in an external service
+
+Did the group discuss the capabilities of the B2B application (what services are offered, architecture diagram)
+- System diagram with our system and providers (apartmentratings.com)
+
+ Did the group explain how the design addresses the three layers of integration (give example of what heterogeneity is shown at each layer and how it get addressed)?
+- Presentation / (Business/Data) (EJB3)
+- Presentation layer: MVC (JSP for view, Servlet for Controller and Domain objects for model )
+
+Did the group explain how different type of users will use the system?
+User and Provider mapped to the same table Users
+
+Did the group explain the business components (e.g. type of beans and purpose of each bean)?
+PaymentService
+UserService
+
+Did the group explain how a business transaction with a trading partner (B2B scenario) is achieved?
+Search (Using WSDL and HTML parsing)
+Payment Rent (Using WSDL)
+
+Did the group discuss how they represent the trading partners?
+Provider class with associated entities. Store search result as history
+
+Did the group address content layer heterogeneity?
+Search through wsdl interface and HTML parse
+
+Did the group discuss how their data layer support their B2B application (e.g. purpose of different tables)
+SearchCriteria and SearchResult and Apartment
+
+Did you learn anything interesting from this design?
+Is there any obvious problems with the design?
+Is there any obvious problems with the presentation?
+
+
+
+
+
+
+- Add data heterogenity
+
+See realstate sample in this web site:
+http://www.movoto.com/real-estate/homes-for-sale/FL/Tampa/18506-Chadwyck-Ct-431_T2355945.htm

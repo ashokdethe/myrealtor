@@ -4,7 +4,7 @@ Real State Web App
 Suggested name: MyRealtor
 
 The main goal of this web app is to demonstrate integration with different Systems. It will try to use various techniques to achieve Systems integration.
-This system will focus in interacting with "real" services like Google geocode service and Goolge maps and with simulated systems, that it will be devoloped as part of this project.
+This system will focus in interacting with "real" services like Google geocode service and Google maps and with simulated systems, that it will be devoloped as part of this project.
 
 It will use virtual (desired only) and materialize methods to allow systems communications.
 
@@ -33,6 +33,8 @@ The system shall allow an user provider to manage his/her properties. The initia
 The system will have a review session. This session will allow any user to post comments about properties in the market.
 
 The system will have a logout function
+
+Keep a history of favorite apartments.
 
 Optional Functions
 ------------------
