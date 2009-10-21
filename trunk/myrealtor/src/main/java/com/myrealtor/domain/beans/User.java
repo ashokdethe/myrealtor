@@ -3,7 +3,6 @@ package com.myrealtor.domain.beans;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.validation.Errors;
@@ -11,15 +10,17 @@ import org.springframework.validation.Errors;
 
 
 @Entity
-@Table(name="Users") 
+//@Table(name="Users") 
 public class User extends BaseEntity {
+	
+	public static final String ROLE_USER = "ROLE_USER";
+	public static final String ROLE_PROVIDER = "ROLE_PROVIDER";
 
 	private static final long serialVersionUID = 1L;
 	
 	protected String username;
 	protected String firstName, lastName, phone, email, password;
-	
-	//protected String address1, address2, city, state, zip;
+	protected String role = ROLE_USER;
 	
 	
 	protected short enabled = 1;
@@ -31,26 +32,29 @@ public class User extends BaseEntity {
 	protected SecurityQuestion question;
 	
 	protected String securityAnswer;
+	
+	@ManyToOne
+	protected Apartment myHome;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	protected Authority authority = new Authority();
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	protected Authority authority = new Authority();
 	
 	
 	@Transient
 	protected String confirmPwd;
 	
 
-	public Authority getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(Authority authority) {
-		this.authority = authority;
-		authority.setUsername( this.getUsername() );
-	}
+//	public Authority getAuthority() {
+//		return authority;
+//	}
+//
+//	public void setAuthority(Authority authority) {
+//		this.authority = authority;
+//		authority.setUsername( this.getUsername() );
+//	}
 	
 	
-	public Address getAddress() {
+	public Address getAddress() {		
 		return address;
 	}
 
@@ -64,7 +68,7 @@ public class User extends BaseEntity {
 
 	public void setUsername(String username) {
 		this.username = username;
-		authority.setUsername( username );
+//		authority.setUsername( username );
 	}
 
 		public String getFirstName() {
@@ -203,6 +207,24 @@ public class User extends BaseEntity {
 		this.confirmPwd = confirmPwd;
 	}
 	
+	
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Apartment getMyHome() {
+		return myHome;
+	}
+
+	public void setMyHome(Apartment myHome) {
+		this.myHome = myHome;
+	}
+
 	public void validateUserForm(Errors errors) {		
 		validatePassword(errors); 		
 		if (lastName.length() < 2) {
@@ -220,9 +242,20 @@ public class User extends BaseEntity {
 	}
 	
 	
+	@Transient
+	public String[] getRoleArray() {
+		return new String[] {ROLE_USER, ROLE_PROVIDER};
+	}
 	
 	
-	
-	
+	public static User createUser(String roleStr) {
+		User ret = new User();
+		if (ROLE_PROVIDER.equalsIgnoreCase( roleStr )) {
+			ret = new Provider();
+		}
+		return ret;
+	}
 
+	
+	
 }

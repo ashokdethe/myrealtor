@@ -4,8 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Table(name = "Authorities")
-@Entity
+@Deprecated //TODO Delete
+//@Table(name = "Authorities")
+//@Entity
 public class Authority extends BaseEntity {
 	
 	public static final String ROLE_USER = "ROLE_USER";

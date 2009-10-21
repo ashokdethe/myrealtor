@@ -21,8 +21,11 @@
 	
 	
 	<security:authentication-provider>		
-		<security:jdbc-user-service data-source-ref="dataSource"/>
-		
+		<security:jdbc-user-service data-source-ref="dataSource" 
+		authorities-by-username-query="SELECT username, role FROM user WHERE username = ?"
+		users-by-username-query="SELECT username, password, enabled FROM user WHERE username = ?"		
+		/>
+				
 		<!--
 		<security:password-encoder hash="md5" />
 		 -->

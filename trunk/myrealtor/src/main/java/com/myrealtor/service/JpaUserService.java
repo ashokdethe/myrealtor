@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.myrealtor.domain.beans.Provider;
 import com.myrealtor.domain.beans.SecurityQuestion;
 import com.myrealtor.domain.beans.User;
 
@@ -38,7 +39,7 @@ public class JpaUserService extends JpaBase implements UserService {
 
 	@Transactional
 	public User store(User user) {
-		user.getAuthority().setUsername( user.getUsername() );
+		//user.getAuthority().setUsername( user.getUsername() );
 		em.persist(user);
 		return user;
 	}	
@@ -49,6 +50,12 @@ public class JpaUserService extends JpaBase implements UserService {
 	public List<SecurityQuestion> findAllSecurityQuestion() {
 		List<SecurityQuestion> list = em.createQuery("select obj from SecurityQuestion obj order by obj.question").getResultList();		
 		return list;	
+	}
+
+	@Override
+	public List<Provider> findAllProviders() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

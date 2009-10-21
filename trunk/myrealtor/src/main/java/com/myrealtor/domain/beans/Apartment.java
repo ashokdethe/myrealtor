@@ -16,6 +16,14 @@ public class Apartment extends BaseEntity {
 	@JoinColumns( { @JoinColumn(name = "apartmentcomplex_id", referencedColumnName = "id") })	
 	protected ApartmentComplex apartmentComplex;
 	
+	@ManyToOne(optional = true)
+	@JoinColumns( { @JoinColumn(name = "provider_id", referencedColumnName = "id") })	
+	protected Provider owner;
+	
+	
+	protected String number;
+	protected boolean readOnly;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected Address address;
 	
