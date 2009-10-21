@@ -7,8 +7,8 @@
 </div>
 
 <form:form modelAttribute="user">
-	<fieldset>
-		<h4>User Information</h4>
+	<fieldset>	
+		<h4>${ user.class.simpleName } Information</h4>
 		<br/>
 
 		<div class="field">
@@ -103,10 +103,12 @@
 		</div>
 		
 		
+	<%--
 	<div class="field">
 	<div class="label">User Type:</div>
-	<div class="input"><form:select path="authority" items="${authorityArray}" />	</div>
+	<div class="input"><form:select path="role" items="${roleArray}" />	</div>
 	</div>
+	 --%>
 		
 		
 		

@@ -8,7 +8,7 @@
 
 <form:form modelAttribute="user">
 	<fieldset>
-		<h4>User Address Information</h4>
+		<h4>${ user.class.simpleName } Address Information</h4>
 		<br/>
 		<div class="field">
 			<div class="label">

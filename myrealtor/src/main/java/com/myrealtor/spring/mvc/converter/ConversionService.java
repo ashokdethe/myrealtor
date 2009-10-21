@@ -35,7 +35,7 @@ public class ConversionService extends DefaultConversionService {
 
 	
     protected void addCustomConverters() {     
-       addConverter("authorityConverter", new AuthorityConverter() );
+       //addConverter("authorityConverter", new AuthorityConverter() );
        addConverter("securityQuestionConverter", new SecurityQuestionConverter(baseService) );
        
 

@@ -3,19 +3,17 @@ Our Design:
 
 
 
-
-
 Did the group document the motivation? does the motivation make sense?
 - Display information in a map. Easy to locate the apartment in some area.
-- Integrate different Apartament Providers in one website
-- Integrate external datasource, like google maps and http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4
+- Integrate different apartment source in one website
+- Integrate external service providers, like google maps and http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4
 - Allow user to make payments in an external service
 
 Did the group discuss the capabilities of the B2B application (what services are offered, architecture diagram)
-- System diagram with our system and providers (apartmentratings.com)
+- System diagram with our system and providers (www.apartmentratings.com)
 
  Did the group explain how the design addresses the three layers of integration (give example of what heterogeneity is shown at each layer and how it get addressed)?
-- Presentation / (Business/Data) (EJB3)
+- View / (Business/Data) (EJB3)
 - Presentation layer: MVC (JSP for view, Servlet for Controller and Domain objects for model )
 
 Did the group explain how different type of users will use the system?

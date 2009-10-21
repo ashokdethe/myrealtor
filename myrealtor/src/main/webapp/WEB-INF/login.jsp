@@ -16,7 +16,8 @@
 	</c:if>
 	
 		
-	New user? Go to <a href='<c:url value="/spring/jsp/user"/>'>MyRealtor Enrollment</a>	
+	New user? Go to <a href='<c:url value="/spring/jsp/user?role=ROLE_USER"/>'>Create new User Account</a> <br/><br/>
+	New provider? Go to <a href='<c:url value="/spring/jsp/user?role=ROLE_PROVIDER"/>'>Create new Provider Account</a>		
 	<br/><br/><br/><br/>
 </div>
 

@@ -6,7 +6,7 @@ import org.springframework.binding.convert.converters.StringToObject;
 
 import com.myrealtor.domain.beans.Authority;
 
-
+@Deprecated
 public class AuthorityConverter extends StringToObject {
 	
 	protected final Log log = LogFactory.getLog(getClass());

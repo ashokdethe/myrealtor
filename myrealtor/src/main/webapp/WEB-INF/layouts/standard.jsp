@@ -57,7 +57,7 @@
 					<a href="<c:url value="/spring/logout" />">Logout</a>
 				</security:authorize>
 				<security:authorize ifAllGranted="ROLE_ANONYMOUS">
-					<a href='<c:url value="/spring/jsp/user"/>'>New user?</a> | 
+					<a href='<c:url value="/spring/jsp/user?role=ROLE_USER"/>'>New user?</a> | 
 					<a href="<c:url value="/spring/login" />">Login</a>
 				</security:authorize>
 			</div>
@@ -90,8 +90,7 @@
 		<table>
 		<tr><td>MyRealtor ${version}: <br/><br/></td></tr>
 		<tr><td>Edson Ricardo Amboni</td></tr>
-		<tr><td>Kevin Gilmore</td></tr>
-		<tr><td>Reginald Jenkins</td></tr>
+		<tr><td>Kevin Gilmore</td></tr>		
 		</table>
 		</center>
 	</div>		
