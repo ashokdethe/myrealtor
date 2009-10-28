@@ -5,6 +5,16 @@
 
 <tiles-definitions>
 	
-	<definition name="standardLayout" template="/WEB-INF/layouts/standard.jsp" />
+	<definition name="standardLayout" template="/WEB-INF/layouts/standard.jsp" >
+		<put-attribute name="head" value="/WEB-INF/jsp/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
+	
+	<definition name="standardMapLayout" template="/WEB-INF/layouts/standard_map.jsp" >
+		<put-attribute name="head" value="/WEB-INF/jsp/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+	</definition>
 	
 </tiles-definitions>

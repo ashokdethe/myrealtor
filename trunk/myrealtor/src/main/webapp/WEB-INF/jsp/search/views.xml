@@ -6,11 +6,11 @@
 <tiles-definitions>
 
 
-	<definition name="search/index" extends="standardLayout">
+	<definition name="search/index" extends="standardMapLayout">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
 	</definition>
 	
-	<definition name="jsp/search" extends="standardLayout">
+	<definition name="jsp/search" extends="standardMapLayout">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
 	</definition>
 
