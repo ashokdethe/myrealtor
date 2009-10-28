@@ -15,7 +15,7 @@ import com.myrealtor.domain.beans.User;
 
 @Service("userService")
 @Repository
-public class JpaUserService extends JpaBase implements UserService {
+public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 
 	
 	private static final long serialVersionUID = 1L;
