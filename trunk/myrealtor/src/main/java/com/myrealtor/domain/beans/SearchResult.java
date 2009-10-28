@@ -14,4 +14,14 @@ public class SearchResult extends BaseEntity {
 	@OneToMany
 	List<Apartment> apartmentList;
 
+	public List<Apartment> getApartmentList() {
+		return apartmentList;
+	}
+
+	public void setApartmentList(List<Apartment> apartmentList) {
+		this.apartmentList = apartmentList;
+	}
+	
+	
+
 }

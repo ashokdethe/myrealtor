@@ -9,7 +9,7 @@ import com.myrealtor.domain.beans.Provider;
 import com.myrealtor.domain.beans.SecurityQuestion;
 import com.myrealtor.domain.beans.User;
 
-public interface UserService extends BaseService {
+public interface UserService extends JpaBaseService {
 
 	@Transactional
 	public User store(User user);

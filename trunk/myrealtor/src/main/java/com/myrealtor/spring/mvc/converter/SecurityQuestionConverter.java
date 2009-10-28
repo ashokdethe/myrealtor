@@ -5,16 +5,16 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.binding.convert.converters.StringToObject;
 
 import com.myrealtor.domain.beans.SecurityQuestion;
-import com.myrealtor.service.BaseService;
+import com.myrealtor.service.JpaBaseService;
 
 
 public class SecurityQuestionConverter extends StringToObject {
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
-	protected BaseService baseService;
+	protected JpaBaseService baseService;
 
-	public SecurityQuestionConverter(BaseService obj) {
+	public SecurityQuestionConverter(JpaBaseService obj) {
 		super(SecurityQuestion.class);
 		this.baseService = obj;
 	}

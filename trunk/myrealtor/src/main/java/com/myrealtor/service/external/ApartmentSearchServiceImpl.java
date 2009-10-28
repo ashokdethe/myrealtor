@@ -9,6 +9,11 @@ import com.myrealtor.domain.beans.SearchResult;
 
 public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SearchResult search(SearchCriteria criteria) {
 		return null;		
 	}

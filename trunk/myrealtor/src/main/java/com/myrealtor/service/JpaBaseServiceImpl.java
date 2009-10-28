@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myrealtor.domain.beans.BaseEntity;
 
-public class JpaBase implements BaseService { 
+public class JpaBaseServiceImpl implements JpaBaseService { 
 
 	private static final long serialVersionUID = 1L; 
 	protected final Log log = LogFactory.getLog(getClass());
