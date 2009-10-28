@@ -6,17 +6,15 @@
 
 <tiles:insertAttribute name="head" />
 
-<body class="tundra spring">
-
+  
+<body class="tundra spring" onload="load()" onunload="GUnload()">
 
 <div id="page">
-
 	<tiles:insertAttribute name="header" />
-
 	
-	<div id="content" class="clearfix spring">		
-		<tiles:insertAttribute name="body" />		
-	</div>
+	<div id="content" class="clearfix spring">				
+		<tiles:insertAttribute name="body" />				
+	</div>	
 	
 	<tiles:insertAttribute name="footer" />	
 	
