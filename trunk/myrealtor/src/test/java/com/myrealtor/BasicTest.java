@@ -33,20 +33,10 @@ public class BasicTest {
 		// Just to avoid error because no test was defined!
 	}
 
-	public static ApplicationContext getApplicationContext() {
-		// TODO Remove hardcode drive letter
-		// ApplicationContext ctx = new
-		// FileSystemXmlApplicationContext("D:/workspace-simple-eclipse-jee-ganymede/RMS/war/WEB-INF/rms-servlet.xml");
-		// ApplicationContext ctx = new
-		// FileSystemXmlApplicationContext("D:/workspace-simple-eclipse-jee-ganymede/RMS/war/WEB-INF/spring-dataaccess-config.xml");
-
+	public static ApplicationContext getApplicationContext() {		
 		ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/config/data-access-config.xml");
-		// ApplicationContext ctx = new
-		// ClassPathXmlApplicationContext("RMS/war/WEB-INF/spring-dataaccess-config.xml");
-
 		File f = new File(".");
 		System.out.println(f.getAbsolutePath());
-
 		return ctx;
 	}
 
