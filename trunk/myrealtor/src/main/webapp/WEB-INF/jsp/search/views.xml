@@ -7,11 +7,11 @@
 
 
 	<definition name="search/index" extends="standardMapLayout">
-		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp" />
 	</definition>
 	
-	<definition name="jsp/search" extends="standardMapLayout">
-		<put-attribute name="body" value="/WEB-INF/jsp/search/index.jsp" />
+	<definition name="search/search" extends="standardMapLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp" />
 	</definition>
 
 </tiles-definitions>

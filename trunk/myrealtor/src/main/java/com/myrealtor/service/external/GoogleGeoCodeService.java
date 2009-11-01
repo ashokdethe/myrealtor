@@ -1,12 +1,8 @@
 package com.myrealtor.service.external;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.Node;
@@ -30,39 +26,40 @@ public class GoogleGeoCodeService extends BaseServiceImpl implements GeoCodeServ
 	
 	
 	
-	public Coordinate findCoordinate(Apartment apartment) throws Exception {
+	public void populateCoordinates(List<Apartment> apartmentList) throws Exception {
+		
+		for (Apartment apartment : apartmentList ) {			
+			
+			String parms = "?q=" + URLEncoder.encode(apartment.getAddress().toString(), "UTF-8") + "&output=xml&sensor=false&" + GOOGLE_KEY_PARAMETER;
+			String urlStr = HTTP_GOOGLE_GEO + parms;		
+			
+//			String xmlStr = getURLContent(urlStr);
+//			log.debug( "xmlStr: " + xmlStr );
+//			StringReader sr = new StringReader( xmlStr );
+					
+			
+			URL url = new URL(urlStr);
+			SAXReader reader = new SAXReader();
+	        Document doc = reader.read( url );		
+			
+		    //TODO Need to have code = 200
+	        Node nodeCode = doc.selectSingleNode( "//*[local-name()='code']" );		
+			String code = nodeCode.getText();
+			log.debug("code: " + code);
+	        
+	        //doc.selectNodes("//*[local-name()='foo']"
+	        //List l3 = doc.selectNodes("//*[local-name()='LatLonBox']");
+			Node nodeCoord = doc.selectSingleNode( "//*[local-name()='LatLonBox']" );
+			String lat = nodeCoord.valueOf( "@north" );
+			String lon = nodeCoord.valueOf( "@east" );
+			log.debug("lat: " + lat + " - long: " + lon);
 
-		String parms = "?q=" + URLEncoder.encode(apartment.getAddress().toString(), "UTF-8") + "&output=xml&sensor=false&" + GOOGLE_KEY_PARAMETER;
-		String urlStr = HTTP_GOOGLE_GEO + parms;		
-		
-//		String xmlStr = getURLContent(urlStr);
-//		log.debug( "xmlStr: " + xmlStr );
-//		StringReader sr = new StringReader( xmlStr );
-				
-		
-		URL url = new URL(urlStr);
-		SAXReader reader = new SAXReader();
-        Document doc = reader.read( url );		
-		
-	    //TODO Need to have code = 200
-        Node nodeCode = doc.selectSingleNode( "//*[local-name()='code']" );		
-		String code = nodeCode.getText();
-		log.debug("code: " + code);
-        
-        //doc.selectNodes("//*[local-name()='foo']"
-        //List l3 = doc.selectNodes("//*[local-name()='LatLonBox']");
-		Node nodeCoord = doc.selectSingleNode( "//*[local-name()='LatLonBox']" );
-		String lat = nodeCoord.valueOf( "@north" );
-		String lon = nodeCoord.valueOf( "@east" );
-		log.debug("lat: " + lat + " - long: " + lon);
+			//Coordinate ret = new Coordinate(lat, lon);
+			apartment.getAddress().setLatitude(lat);
+			apartment.getAddress().setLongitude(lon);
+								
+		}
 
-		Coordinate ret = new Coordinate(lat, lon);
-		apartment.getAddress().setLatitude(lat);
-		apartment.getAddress().setLongitude(lon);
-		
-		
-       	return ret;
-	
 	}
 	
 //	protected Document parse(URL url) throws Exception {		
@@ -74,19 +71,6 @@ public class GoogleGeoCodeService extends BaseServiceImpl implements GeoCodeServ
 
 	
 
-	protected String getURLContent(String urlStr) throws MalformedURLException, IOException {
-		URL url = new URL(urlStr);
-		log.info("url: " + url);
-		URLConnection conn = url.openConnection();
-		
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		
-		StringBuffer buf = new StringBuffer();
-		String inputLine;
-		while ( (inputLine = in.readLine()) != null ) {
-			buf.append( inputLine );			
-		}		
-		in.close();
-		return buf.toString();
-	}
+	
+	
 }
