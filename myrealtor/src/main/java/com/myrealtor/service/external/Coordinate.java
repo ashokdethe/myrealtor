@@ -1,6 +1,6 @@
 package com.myrealtor.service.external;
 
-
+@Deprecated
 public class Coordinate  {
 	
 	protected String latitude, longitude;

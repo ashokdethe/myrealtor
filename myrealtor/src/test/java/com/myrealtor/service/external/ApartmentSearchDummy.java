@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.myrealtor.domain.beans.Apartment;
 import com.myrealtor.domain.beans.ApartmentTest;
 import com.myrealtor.domain.beans.SearchCriteria;
 import com.myrealtor.domain.beans.SearchResult;
@@ -25,11 +24,7 @@ public class ApartmentSearchDummy extends BaseServiceImpl implements ApartmentSe
 		log.info("Executing dummy search: " + criteria);		
 		SearchResult r = new SearchResult();
 		r.setApartmentList( ApartmentTest.createList() );
-		
-		for (Apartment a : r.getApartmentList()) {
-			geoCode.findCoordinate( a );		
-		}
-		
+		geoCode.populateCoordinates( r.getApartmentList() );		
 		return r;		
 	}
 	

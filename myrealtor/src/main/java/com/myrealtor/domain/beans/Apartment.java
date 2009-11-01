@@ -26,6 +26,15 @@ public class Apartment extends BaseEntity {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected Address address;
+	
+	
+
+	public Apartment() {	
+	}
+	
+	public Apartment(String addressStr) {
+		this.address = new Address(addressStr);
+	}
 
 	public Address getAddress() {
 		return address;
