@@ -38,8 +38,7 @@ public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 	
 
 	@Transactional
-	public User store(User user) {
-		//user.getAuthority().setUsername( user.getUsername() );
+	public User store(User user) {		
 		em.persist(user);
 		return user;
 	}	

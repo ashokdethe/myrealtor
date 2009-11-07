@@ -25,8 +25,8 @@ public class User extends BaseEntity {
 	
 	protected short enabled = 1;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	protected Address address = new Address();
+//	@ManyToOne(cascade=CascadeType.ALL)
+//	protected Address address = new Address();
 	
 	@ManyToOne
 	protected SecurityQuestion question;
@@ -43,24 +43,14 @@ public class User extends BaseEntity {
 	@Transient
 	protected String confirmPwd;
 	
-
-//	public Authority getAuthority() {
-//		return authority;
+	
+//	public Address getAddress() {		
+//		return address;
 //	}
 //
-//	public void setAuthority(Authority authority) {
-//		this.authority = authority;
-//		authority.setUsername( this.getUsername() );
+//	public void setAddress(Address address) {
+//		this.address = address;
 //	}
-	
-	
-	public Address getAddress() {		
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 
 	public String getUsername() {
 		return username;

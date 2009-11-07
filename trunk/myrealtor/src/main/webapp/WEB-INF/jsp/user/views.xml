@@ -10,8 +10,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/user/userForm.jsp" />
 	</definition>
 	
-	<definition name="userAddressForm" extends="standardLayout">		
-		<put-attribute name="body" value="/WEB-INF/jsp/user/userAddressForm.jsp" />
+	<definition name="apartmentComplexForm" extends="standardLayout">		
+		<put-attribute name="body" value="/WEB-INF/jsp/user/apartmentComplexForm.jsp" />
 	</definition>
 	
 	<definition name="userEnrollmentSuccess" extends="standardLayout">		
