@@ -1,5 +1,9 @@
 package com.myrealtor.service.external;
 
-public interface ApartmentManagementService {
+import com.myrealtor.domain.beans.Provider;
 
+public interface ApartmentManagementService {
+	
+	public void registerProvider(Provider provider) throws Exception;
+	
 }

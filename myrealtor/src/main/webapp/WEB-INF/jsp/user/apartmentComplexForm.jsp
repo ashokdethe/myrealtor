@@ -1,14 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="messages">
 	<form:errors path="user.*" cssClass="errors" />
 </div>
 
-<form:form modelAttribute="user">
+<form:form modelAttribute="apartmentComplex">
 	<fieldset>
-		<h4>${ user.class.simpleName } Address Information</h4>
+		<h4>Apartment Complex Information</h4>
 		<br/>
 		<div class="field">
 			<div class="label">
@@ -78,7 +79,7 @@
 				<label for="zip">Zip:</label>
 			</div>
 			<div class="input">
-				<form:input path="address.zip" maxlength="40"/>
+				<form:input path="address.zip" maxlength="10"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "address.zip",
@@ -87,19 +88,31 @@
 				</script>
 			</div>
 		</div>
+		
+		
+		<div class="field">
+			<div class="label">
+				<label for="numberUnits">Number of units:</label>
+			</div>
+			<div class="input">
+				<form:input path="numberUnits" maxlength="2"/>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "numberUnits",
+						widgetType : "dijit.form.NumberTextBox",
+						widgetAttrs : { required : true }}));
+				</script>
+			</div>
+		</div>
+		
 
 		<div class="field">
 			<div class="label">
-				<label for="phone">Phone:</label>
+				<label for="pricePerMonth">Price per month:</label>
 			</div>
 			<div class="input">
-				<form:input path="phone" maxlength="40"/>
-				<script type="text/javascript">
-					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "phone",
-						widgetType : "dijit.form.ValidationTextBox",
-						widgetAttrs : { required : false }}));
-				</script>
+				<input id="pricePerMonth" name="pricePerMonth" type="text" value='<fmt:formatNumber minFractionDigits="2" value="${apartmentComplex.pricePerMonth}" />' maxlength="14"
+				dojoType="dijit.form.CurrencyTextBox" required="true" constraints="{fractional:true}" currency="USD" invalidMessage="Invalid amount.  Cents are required." />
 			</div>
 		</div>
 

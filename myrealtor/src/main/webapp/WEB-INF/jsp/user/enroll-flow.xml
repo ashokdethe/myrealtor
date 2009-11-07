@@ -6,6 +6,9 @@
 	<persistence-context/>	 
 	
 	<var name="user" class="com.myrealtor.domain.beans.User" />
+	<var name="apartmentComplex" class="com.myrealtor.domain.beans.ApartmentComplex" />
+	
+	
 	<!-- 
 	<var name="provider" class="com.myrealtor.domain.beans.Provider" />
 	 -->
@@ -38,34 +41,44 @@
 			<binding property="confirmPwd" required="true" />			
 			<binding property="securityAnswer" required="true" />			
 		</binder>
-		<transition on="proceed" to="userAddressForm"  >					
+		<transition on="proceed" to="askForAddress"  >					
 		</transition>
 		<transition on="cancel" to="cancel" bind="false" /> 
 	</view-state>
 	
+	<decision-state id="askForAddress">
+		<if test="user instanceof com.myrealtor.domain.beans.Provider" then="apartmentComplexForm" else="storeUserAction" />	
+	</decision-state>	
 	
 	
-	
-	<view-state id="userAddressForm" model="user">
+	<view-state id="apartmentComplexForm" model="apartmentComplex">
 		<binder>			
 			<binding property="address.address1" required="true" />
 			<binding property="address.address2" required="false" />
 			<binding property="address.city" required="true" />
 			<binding property="address.state" required="true" />
 			<binding property="address.zip" required="true" />			
-			<binding property="phone" required="false" />
+			<binding property="numberUnits" required="true" />
+			<binding property="pricePerMonth" required="true" />
 		</binder>
-		<transition on="confirm" to="userEnrollmentSuccess">
-			<evaluate expression="userService.store(user)" result="flowScope.user" />
+		
+		<transition on="confirm" to="userEnrollmentSuccess" >
+		
+			<set name="user.apartmentComplex" value="flowScope.apartmentComplex"></set>
+			
+			<evaluate expression="apartmentManagementServiceImpl.registerProvider(user)" />
+						
 		</transition>
+							
 		<transition on="cancel" to="cancel" bind="false" />
 	</view-state>
 	
+	<action-state id="storeUserAction">
+		<evaluate expression="userService.store(user)" result="flowScope.user" />
+		<transition to="userEnrollmentSuccess" />	
+	</action-state>
 	
-	<!-- 
-	<end-state id="userConfirmed" commit="true" view="externalRedirect:servletRelative:/login" >		
-	</end-state>
-	 -->
+	 
 	<end-state id="userEnrollmentSuccess" commit="true" view="userEnrollmentSuccess">		
 	</end-state>	 
 

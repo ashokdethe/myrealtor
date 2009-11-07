@@ -15,6 +15,7 @@
 					<a href="<c:url value="/spring/logout" />">Logout</a>
 				</security:authorize>
 				<security:authorize ifAllGranted="ROLE_ANONYMOUS">
+					<a href='<c:url value="/spring/jsp/user?role=ROLE_PROVIDER"/>'>New provider?</a> |
 					<a href='<c:url value="/spring/jsp/user?role=ROLE_USER"/>'>New user?</a> | 
 					<a href="<c:url value="/spring/login" />">Login</a>
 				</security:authorize>

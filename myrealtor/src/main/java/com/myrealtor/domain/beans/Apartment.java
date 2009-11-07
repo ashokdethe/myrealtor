@@ -8,7 +8,10 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class Apartment extends BaseEntity { 
+public class Apartment extends BaseEntity {
+	
+	public final String STATUS_VACANT = "VACANT";
+	public final String STATUS_OCCUPIED = "OCCUPIED";
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,10 +26,10 @@ public class Apartment extends BaseEntity {
 	
 	protected String number;
 	protected boolean readOnly;
+	protected String status = STATUS_VACANT;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected Address address;
-	
 	
 
 	public Apartment() {	
