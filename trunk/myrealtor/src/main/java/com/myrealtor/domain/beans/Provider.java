@@ -8,22 +8,21 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Provider extends User {
+	
+	public static final String DEFAULT_URL = "http://127.0.0.1:8080/apartment_management_webservice/services/webservice";
 
 	public static final String PROVIDER_TYPE_PARSER = "TYPE_PARSER";
 	public static final String PROVIDER_TYPE_WEBSERVICE = "TYPE_WEBSERVICE";
 	
 	private static final long serialVersionUID = 1L;
 	
-	protected String url;
+	protected String url = DEFAULT_URL;
 	protected String htmlParserName;
 	protected String providerType = PROVIDER_TYPE_WEBSERVICE;
 	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-//	protected Set<ApartmentComplex> apartmentComplexSet;
-	
-	//@OneToOne(cascade = CascadeType.ALL, mappedBy = "owner")
+
 	@OneToOne(cascade = CascadeType.ALL)
-	protected ApartmentComplex apartmentComplex;
+	protected ApartmentComplex apartmentComplex = new ApartmentComplex(); 
 
 	public Provider() {
 		role = ROLE_PROVIDER;	

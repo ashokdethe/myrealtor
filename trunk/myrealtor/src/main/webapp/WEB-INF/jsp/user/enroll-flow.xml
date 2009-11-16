@@ -62,9 +62,22 @@
 			<binding property="pricePerMonth" required="true" />
 		</binder>
 		
-		<transition on="confirm" to="userEnrollmentSuccess" >
+		<transition on="confirm" to="urlForm" >
 		
 			<set name="user.apartmentComplex" value="flowScope.apartmentComplex"></set>
+						
+		</transition>
+							
+		<transition on="cancel" to="cancel" bind="false" />
+	</view-state>
+	
+	
+	<view-state id="urlForm" model="user">
+		<binder>			
+			<binding property="url" required="true" />			
+		</binder>
+		
+		<transition on="confirm" to="userEnrollmentSuccess" >		
 			
 			<evaluate expression="apartmentManagementServiceImpl.registerProvider(user)" />
 						
@@ -72,6 +85,7 @@
 							
 		<transition on="cancel" to="cancel" bind="false" />
 	</view-state>
+	
 	
 	<action-state id="storeUserAction">
 		<evaluate expression="userService.store(user)" result="flowScope.user" />

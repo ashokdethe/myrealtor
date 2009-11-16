@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="messages">
-	<form:errors path="user.*" cssClass="errors" />
+	<form:errors path="apartmentComplex.*" cssClass="errors" />
 </div>
 
 <form:form modelAttribute="apartmentComplex">
@@ -118,7 +118,7 @@
 
 
 		<div class="buttonGroup">
-			<input type="submit" name="_eventId_confirm" id="proceed" value="Confim"/>&#160;
+			<input type="submit" name="_eventId_confirm" id="proceed" value="Next"/>&#160;
 			<script type="text/javascript">
 				Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));
 			</script>			

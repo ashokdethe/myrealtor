@@ -1,19 +1,11 @@
 package com.myrealtor.domain.beans;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
@@ -23,26 +15,27 @@ import org.apache.commons.logging.LogFactory;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 	
-	public static final String CODE_VERSION = "0.0.5";
+	public static final String CODE_VERSION = "0.0.6";
 	
 	@Transient
 	protected final Log log = LogFactory.getLog(getClass());
 
 	private static final long serialVersionUID = 1L;
 	
-	private static SimpleDateFormat timeFormat;
-	
-	@Transient
-	protected static SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-	
-	@Transient
-	protected static DecimalFormat decimalFormat = new DecimalFormat("0000");
+	//private static SimpleDateFormat timeFormat;
 	
 	
-	
-	@Transient
-	protected static Random random = new Random( (new Date()).getTime() );
+//	@Transient
+//	protected static SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+//	
+//	@Transient
+//	protected static DecimalFormat decimalFormat = new DecimalFormat("0000"); 
+//	
+//	
+//	@Transient
+//	protected static Random random = new Random( (new Date()).getTime() );
 
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -50,10 +43,31 @@ public class BaseEntity implements Serializable {
 	@Version
 	private Long version;
 	
-	@Temporal(value=TemporalType.TIMESTAMP)
-	private Date creationDate = new Date();
+	//Date does not work with Axis2 (Axiom)
+//	@Temporal(value=TemporalType.TIMESTAMP)
+//	private Date creationDate = new Date();
+//	
+//	public Date getCreationDate() {
+//		return creationDate;
+//	}
+//		
+//
+//	public void setCreationDate(Date creationDate) {
+//		this.creationDate = creationDate;
+//	}
 
+	@Transient
+	protected int tempId;
 	
+	
+	public int getTempId() {
+		return tempId;
+	}
+
+	public void setTempId(int tempId) {
+		this.tempId = tempId;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -64,9 +78,7 @@ public class BaseEntity implements Serializable {
 
 	
 	
-	public Date getCreationDate() {
-		return creationDate;
-	}
+	
 
 	public Long getVersion() {
 		return version;
@@ -110,9 +122,17 @@ public class BaseEntity implements Serializable {
 		final BaseEntity other = (BaseEntity) obj;	
 		if (id != other.id)
 			return false;
+		if (tempId != other.tempId) 
+			return false;
 		return true;
 	}
 	
+	
+	
+	
+	/*
+
+
 	public static synchronized SimpleDateFormat getTimeFormat() {
 		if (timeFormat == null) {
 			timeFormat = new SimpleDateFormat("HH:mm");
@@ -120,6 +140,7 @@ public class BaseEntity implements Serializable {
 		}
 		return timeFormat;
 	}
+
 	
 	protected Date setupDateTime(Date date, String time) throws ParseException{
 		if (date != null && time != null) {
@@ -129,8 +150,9 @@ public class BaseEntity implements Serializable {
 		}
 		return date;
 	}
-	
-	
+
+
+
 	protected Date getDateWithSpecificTime(Date date, int hour, int minute) {		
 		return getDateWithSpecificTime(date, 0, hour, minute);
 	}
@@ -145,8 +167,9 @@ public class BaseEntity implements Serializable {
 		cal.set(Calendar.MILLISECOND, 0);
 		return cal.getTime();
 	}
+	*/
 	
-	
+	/*
 	protected int getRandomInt(int limit) {
 		return Math.abs(random.nextInt()) % (limit + 1);
 	}
@@ -155,7 +178,7 @@ public class BaseEntity implements Serializable {
 		int num = getRandomInt(9999);		
 		return decimalFormat.format(num);
 	}
-	
+	*/
 	
 
 }

@@ -166,6 +166,12 @@ border-bottom: 1px solid white;
 		width: 250px;
 		text-align: left;
 	}
+	
+	.field .input_long {
+		float: left;
+		width: 450px;
+		text-align: left;
+	}
 
 	.field .output {
 		float: left;

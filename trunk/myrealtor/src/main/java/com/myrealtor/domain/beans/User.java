@@ -1,16 +1,19 @@
 package com.myrealtor.domain.beans;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.validation.Errors;
 
 
 
 @Entity
-//@Table(name="Users") 
+//@Table(name="Users")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
 public class User extends BaseEntity {
 	
 	public static final String ROLE_USER = "ROLE_USER";
@@ -18,15 +21,14 @@ public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Column(nullable = false)
 	protected String username;
 	protected String firstName, lastName, phone, email, password;
 	protected String role = ROLE_USER;
 	
 	
 	protected short enabled = 1;
-	
-//	@ManyToOne(cascade=CascadeType.ALL)
-//	protected Address address = new Address();
+
 	
 	@ManyToOne
 	protected SecurityQuestion question;
@@ -36,8 +38,6 @@ public class User extends BaseEntity {
 	@ManyToOne
 	protected Apartment myHome;
 
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	protected Authority authority = new Authority();
 	
 	
 	@Transient
@@ -220,6 +220,18 @@ public class User extends BaseEntity {
 		if (lastName.length() < 2) {
 			errors.rejectValue("lastName", "", "Last name needs to be greater than 1 character!");			
 		}
+		boolean isAlpha = true;
+		for (int i = 0; i < username.length(); i++) {
+			if (! Character.isLetterOrDigit( username.charAt( i ) )  ) {
+				isAlpha = false;
+				break;
+			}
+		}
+		
+		if ( ! isAlpha ) {
+			errors.rejectValue("username", "", "Username can only have letter and/or digit!");
+		}
+		
 	}
 
 	public void validatePassword(Errors errors) {

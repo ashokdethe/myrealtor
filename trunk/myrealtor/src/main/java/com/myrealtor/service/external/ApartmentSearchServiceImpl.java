@@ -1,6 +1,7 @@
 package com.myrealtor.service.external;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,12 +14,18 @@ import com.myrealtor.domain.beans.Apartment;
 import com.myrealtor.domain.beans.Provider;
 import com.myrealtor.domain.beans.SearchCriteria;
 import com.myrealtor.domain.beans.SearchResult;
+import com.myrealtor.service.UserService;
 
 @Service
 public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 	
 	@Resource (name = "googleGeoCodeService")
 	GeoCodeService geoCode;
+	
+	
+	@Resource(name = "userService")
+	protected UserService userService;
+
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
@@ -30,9 +37,24 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 	public SearchResult search( SearchCriteria criteria ) throws Exception {
 		//TODO need to combine result from readOnly and regular apartments
 		SearchResult r = new SearchResult();
-		List<Apartment> list = findApartmentListReadOnly( criteria, null );
-		geoCode.populateCoordinates( list );
+		
+		List<Apartment> list = new ArrayList<Apartment>();
+		
+		try {
+			list = findApartmentListReadOnly( criteria, null );
+			geoCode.populateCoordinates( list );			
+		} catch (Exception e) {
+			log.error(e, e);			
+		}
+		
+		
+		List<Provider> providerList = userService.findAllProviders();
+		log.debug("providerList: " + providerList);
+		List<Apartment> aptlist = findApartmentList(providerList, criteria);
+		list.addAll( aptlist );
+		
 		r.setApartmentList( list );
+			
 		return r;		
 	}
 	
@@ -49,8 +71,40 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 		return list;
 	}
 	
-	protected List<Apartment> findApartmentList( List<Provider> providerList) {
-		return null;
+	protected List<Apartment> findApartmentList( List<Provider> providerList, SearchCriteria criteria) throws Exception {
+		log.debug( "findApartmentList criteria: " + criteria.getCriteria() + " - providerList: " + providerList);
+		
+		List<Apartment> list = new ArrayList<Apartment>();
+		AxisRPCClient axis = null;
+		
+		for (Provider p : providerList) {
+			
+			axis = new AxisRPCClient( p.getUrl() );
+			List<Apartment> listByProvider = axis.findApartmentList(p.getUsername(), criteria.getCriteria());
+			
+			if (listByProvider.size() > 0) {
+				//Only add 1  because the Address is the same
+				list.add(  listByProvider.get(0) );				
+			} else {
+				log.warn("Provider " + p + " does not have apartment!");				
+			}
+						
+		}
+		
+		return list;
+	}
+	
+	public List<Apartment> findApartmentList( String username, String zip ) throws Exception {
+		log.debug( "findApartmentList username: " + username);
+		
+		
+		//Provider provider = (Provider) userService.findById(providerId, Provider.class);
+		Provider provider = (Provider) userService.findByUsername(username);
+		AxisRPCClient axis = new AxisRPCClient( provider.getUrl() );
+		List<Apartment> listByProvider = axis.findApartmentList(provider.getUsername(), zip );
+		
+		return listByProvider;
+		
 	}
 	
 	

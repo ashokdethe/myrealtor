@@ -16,7 +16,7 @@ public interface UserService extends JpaBaseService {
 	
 	public List<Provider> findAllProviders();
 	
-	public User findByUsername(String number);
+	public User findByUsername(String username);
 	public List<SecurityQuestion> findAllSecurityQuestion();
 	public User findBySecurityQuestion(String answer, String email, long securityQuestionId); 
 

@@ -23,11 +23,11 @@
 	</appender>
 
 	<logger name="org.springframework.beans">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 
 	<logger name="org.springframework.binding">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 	
 	<logger name="org.springframework.jdbc">
@@ -43,7 +43,7 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 
 	<logger name="org.springframework.webflow">
@@ -51,7 +51,7 @@
 	</logger>
 	
 	<logger name="org.hibernate.SQL">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 	
 	<logger name="com.myrealtor">
