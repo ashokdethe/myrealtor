@@ -1,0 +1,16 @@
+<project name="myrealtor" basedir="." default="jar_domain">
+	
+	<property name="dest.dir" value="dist" />
+	<property name="aptmanagement.dir" value="C:/workspace-eclipse-jee-galileo-win32/apartment_management_webservice/WebContent/WEB-INF/lib" />
+	
+	<target name="jar_domain" >		
+		<mkdir dir="${dest.dir}"/>
+
+		<jar basedir="src/main/webapp/WEB-INF/classes" destfile="${dest.dir}/myrealtor_domain.jar" includes="com/myrealtor/domain/**/*.*"  />
+
+		<copy file="${dest.dir}/myrealtor_domain.jar" tofile="${aptmanagement.dir}/myrealtor_domain.jar" overwrite="true" />
+
+	</target>
+
+	
+</project>

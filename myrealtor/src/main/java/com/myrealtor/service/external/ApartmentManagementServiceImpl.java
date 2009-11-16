@@ -18,6 +18,7 @@ public class ApartmentManagementServiceImpl implements ApartmentManagementServic
 	@Resource (name = "userService")
 	UserService userService;
 	
+	
 	protected final Log log = LogFactory.getLog(getClass());
 	
 	/**
@@ -32,7 +33,8 @@ public class ApartmentManagementServiceImpl implements ApartmentManagementServic
 		//TODO validate address
 		geoCode.findCoordinate( provider.getApartmentComplex().getAddress() );
 		
-		//TODO call webservice
+		AxisRPCClient axisClient = new AxisRPCClient( provider.getUrl() );
+		axisClient.registerProvider(provider);
 
 		userService.store(provider);		
 	}

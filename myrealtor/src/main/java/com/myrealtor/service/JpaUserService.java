@@ -20,9 +20,9 @@ public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public User findByUsername(String number) {
-		Query query = em.createQuery("select obj from User obj where obj.flyNumber = :number ");
-		query.setParameter("number", number);
+	public User findByUsername(String username) {
+		Query query = em.createQuery("select obj from User obj where obj.username = :username ");
+		query.setParameter("username", username);
 		User ret = (User) query.getSingleResult();		
 		return ret;		
 	}
@@ -51,10 +51,12 @@ public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 		return list;	
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Provider> findAllProviders() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("from Provider obj where obj.providerType = :providerType");
+		query.setParameter("providerType", Provider.PROVIDER_TYPE_WEBSERVICE );		
+		return query.getResultList();
 	}
 	
 	

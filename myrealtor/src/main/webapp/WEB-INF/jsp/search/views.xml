@@ -13,5 +13,9 @@
 	<definition name="search/search" extends="standardMapLayout">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp" />
 	</definition>
+	
+	<definition name="search/list" extends="standardMapLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/list.jsp" />
+	</definition>
 
 </tiles-definitions>

@@ -12,7 +12,11 @@
 <div id="page">
 	<tiles:insertAttribute name="header" />
 	
-	<div id="content" class="clearfix spring">				
+	<div id="content" class="clearfix spring">
+	<div class="section" class="errors">
+		<c:out value="${message}"></c:out>
+	</div>
+					
 		<tiles:insertAttribute name="body" />				
 	</div>	
 	

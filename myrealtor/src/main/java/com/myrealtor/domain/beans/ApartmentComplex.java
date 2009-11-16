@@ -1,11 +1,10 @@
 package com.myrealtor.domain.beans;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
+import org.springframework.validation.Errors;
 
 @Entity
 public class ApartmentComplex extends BaseEntity {
@@ -21,13 +20,14 @@ public class ApartmentComplex extends BaseEntity {
 //	@JoinColumns( { @JoinColumn(name = "provider_id", referencedColumnName = "id") })	
 //	protected Provider owner;
 	
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected Address address = new Address();
 	
 
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartmentComplex")
-	protected Set<Apartment> unitSet;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartmentComplex")
+//	protected Set<Apartment> unitSet;
 
 
 
@@ -70,8 +70,24 @@ public class ApartmentComplex extends BaseEntity {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+	/*
+	public Set<Apartment> getUnitSet() {
+		return unitSet;
+	}
+
+	public void setUnitSet(Set<Apartment> unitSet) {
+		this.unitSet = unitSet;
+	}
+	*/
 		
-	
+	public void validateApartmentComplexForm(Errors errors) {		
+		 		
+		if (numberUnits > 10) {
+			errors.rejectValue("numberUnits", "", "Max numberUnits is 10!");			
+		}		
+		
+	}
 	
 	
 }
