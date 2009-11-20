@@ -64,6 +64,7 @@ public class AxisRPCClient {
 		serviceClient.invokeRobust(qName, opAddEntryArgs);
 		
 		serviceClient.cleanup();
+		serviceClient.cleanupTransport();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -85,6 +86,7 @@ public class AxisRPCClient {
 		List result =  Arrays.asList( resultArray );
 		
 		serviceClient.cleanup();
+		serviceClient.cleanupTransport();
 		return result;
 
 	}

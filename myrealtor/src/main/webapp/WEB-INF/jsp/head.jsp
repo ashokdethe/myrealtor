@@ -41,8 +41,32 @@
         
         
     }
+
+
+	function setFocus() {
+		var field = dijit.byId("address.address1");
+		if ( field != null) {
+			field.focus();
+			return;
+		} 
+				
+		field = dijit.byId("firstName");
+		if (field != null) {
+			field.focus();
+			return;
+		}
+
+		field = dijit.byId("url");
+		if (field != null) {
+			field.focus();
+			return;
+		}
+		
+	}	
+    
     
 </script>
+
     
     
 </head>

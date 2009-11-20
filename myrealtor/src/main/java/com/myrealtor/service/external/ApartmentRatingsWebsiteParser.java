@@ -19,14 +19,9 @@ public class ApartmentRatingsWebsiteParser extends ApartmentHTMLParser {
 
 	@SuppressWarnings("unchecked")
 	public List<Apartment> parse(URL url) throws Exception {
-		// String str = HTMLUtil.getURLContent(
+		log.debug("parse: " + url);
 		// "http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4"
-		// );
-		// int start = str.indexOf("<body>");
-		// int end = str.indexOf("</body>") + "</body>".length();
-		// str = str.substring(start, end);
-		// log.debug( "xmlStr: " + str );
-
+		
 		// Need to use HTML parser (NekoHTML) to avoid:
 		// org.dom4j.DocumentException: Server returned HTTP response code: 503
 		// for URL: http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
@@ -36,7 +31,7 @@ public class ApartmentRatingsWebsiteParser extends ApartmentHTMLParser {
 		//Document doc = sax.read(new URL("http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4"));
 		Document doc = sax.read( url );
 
-		//log.debug( doc.asXML() );
+		//log.info( "doc.hasContent(): " + doc.hasContent() );
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("xhtml", "http://www.w3.org/1999/xhtml");
@@ -52,6 +47,10 @@ public class ApartmentRatingsWebsiteParser extends ApartmentHTMLParser {
 			log.debug( var );
 			listApt.add( new Apartment( var ) );
 		}
+		
+//		if (listApt.isEmpty()) {
+//			log.info("listApt.isEmpty(): " + doc.asXML());
+//		}
 
 		return listApt;
 	}

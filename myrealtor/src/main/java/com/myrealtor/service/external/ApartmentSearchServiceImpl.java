@@ -25,6 +25,8 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 	
 	@Resource(name = "userService")
 	protected UserService userService;
+	
+	//Map<String, AxisRPCClient> clientMap = new Hashtable<String, AxisRPCClient>();
 
 	
 	protected final Log log = LogFactory.getLog(getClass());
