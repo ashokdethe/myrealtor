@@ -38,5 +38,9 @@
 </table>
 
 
+<br/>
+<a href='<c:url value="/spring/search/search?criteria=${zip}"/>'>Go back to Search Result</a>
+
+
 </div>
 

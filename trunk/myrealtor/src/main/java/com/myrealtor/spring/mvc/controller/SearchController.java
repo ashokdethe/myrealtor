@@ -31,7 +31,8 @@ public class SearchController extends BaseController {
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.POST)
+	//@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping
 	public String search(@ModelAttribute SearchCriteria criteria, Model model, WebRequest request) throws Exception {
 		log.debug("search");
 		String view = "search/search";
@@ -58,7 +59,7 @@ public class SearchController extends BaseController {
 		model.addAttribute( "apartmentList", list );
 		model.addAttribute( "provider", list.get(0).getOwner() );
 		model.addAttribute( "address", list.get(0).getAddress() );
-		
+		model.addAttribute("zip", zip );		
 	}
 
 }
