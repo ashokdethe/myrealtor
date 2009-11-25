@@ -72,9 +72,14 @@ public class AxisRPCClient {
 		log.debug("findApartmentList providerId: " + username + " - zip: " + zip);
 
 		// QName of the target method
-		QName qName = new QName("http://service.apartment.com", "findApartment");
+		QName qName = new QName("http://service.apartment.com", "findApartmentByUsername");
 
-		Object[] opFindEntryArgs = new Object[] { username, zip };
+		Object[] opFindEntryArgs = new Object[] { username };
+		if ( zip != null) {
+			qName = new QName("http://service.apartment.com", "findApartment");
+			opFindEntryArgs = new Object[] { username, zip };			
+		}
+		
 		Class[] returnTypes = new Class[] { Apartment[].class };
 		//Class[] returnTypes = new Class[] { List.class };
 
@@ -88,6 +93,28 @@ public class AxisRPCClient {
 		serviceClient.cleanup();
 		serviceClient.cleanupTransport();
 		return result;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public Apartment rent(String username, String aptNumber) throws Exception {
+		log.debug("rent providerId: " + username + " - aptNumber: " + aptNumber);
+		QName qName = new QName("http://service.apartment.com", "rent");
+
+		Object[] opArgs = new Object[] { username, aptNumber };
+		
+		
+		Class[] returnTypes = new Class[] { Apartment.class };
+		
+
+		Object[] response = serviceClient.invokeBlocking(qName, opArgs, returnTypes);
+
+		Apartment apt = (Apartment) response[0];
+		
+		serviceClient.cleanup();
+		serviceClient.cleanupTransport();
+		
+		return apt;
 
 	}
 

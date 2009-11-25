@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 @Entity
 public class ApartmentComplex extends BaseEntity {
 
+	public static final int MAX_NUMBER_UNITS = 30;
+
 	private static final long serialVersionUID = 1L;	
 	
 	protected String name;
@@ -83,9 +85,13 @@ public class ApartmentComplex extends BaseEntity {
 		
 	public void validateApartmentComplexForm(Errors errors) {		
 		 		
-		if (numberUnits > 10) {
-			errors.rejectValue("numberUnits", "", "Max numberUnits is 10!");			
+		if (numberUnits > MAX_NUMBER_UNITS) {
+			errors.rejectValue("numberUnits", "", "Max numberUnits is " + MAX_NUMBER_UNITS + "!");			
 		}		
+		
+		if (numberUnits <= 0) {
+			errors.rejectValue("numberUnits", "", "Invalid numberUnits!");			
+		}
 		
 	}
 	

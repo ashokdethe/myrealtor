@@ -15,7 +15,7 @@ import org.apache.commons.logging.LogFactory;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 	
-	public static final String CODE_VERSION = "0.0.7";
+	public static final String CODE_VERSION = "0.0.8";
 	
 	@Transient
 	protected final Log log = LogFactory.getLog(getClass());

@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import com.myrealtor.domain.beans.Apartment;
 import com.myrealtor.domain.beans.SearchCriteria;
 import com.myrealtor.domain.beans.SearchResult;
+import com.myrealtor.domain.beans.User;
 import com.myrealtor.service.external.ApartmentSearchService;
 
 
@@ -30,8 +31,6 @@ public class SearchController extends BaseController {
 		model.addAttribute("criteria", new SearchCriteria());
 	}
 	
-	
-	//@RequestMapping(method = RequestMethod.POST)
 	@RequestMapping
 	public String search(@ModelAttribute SearchCriteria criteria, Model model, WebRequest request) throws Exception {
 		log.debug("search");
@@ -60,6 +59,15 @@ public class SearchController extends BaseController {
 		model.addAttribute( "provider", list.get(0).getOwner() );
 		model.addAttribute( "address", list.get(0).getAddress() );
 		model.addAttribute("zip", zip );		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String rent(@RequestParam("username") String username, @RequestParam("number") String aptNumber, Model model, WebRequest request) throws Exception {
+		log.debug("rent username: " + username);
+		
+		User user = userService.findByUsername( request.getUserPrincipal().getName() );		
+		apartmentSearchService.rent(user, username, aptNumber);
+		return "redirect:/spring/myaccount/index";
 	}
 
 }
