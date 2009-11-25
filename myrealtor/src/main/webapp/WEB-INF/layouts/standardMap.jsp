@@ -6,8 +6,7 @@
 
 <tiles:insertAttribute name="head" />
 
-  
-<body class="tundra spring" onload="load()" onunload="GUnload()">
+<body class="tundra spring" onload="load()" onunload="GUnload();">
 
 <div id="page">
 	<tiles:insertAttribute name="header" />

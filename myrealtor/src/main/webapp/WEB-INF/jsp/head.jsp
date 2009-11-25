@@ -61,6 +61,12 @@
 			field.focus();
 			return;
 		}
+
+		field = dijit.byId("criteria");
+		if (field != null) {
+			field.focus();
+			return;
+		}
 		
 	}	
     

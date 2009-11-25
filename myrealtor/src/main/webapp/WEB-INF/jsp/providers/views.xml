@@ -5,8 +5,13 @@
 	
 <tiles-definitions>
 	
-	<definition name="providers/index" extends="standardLayout">
+	<definition name="provider/index" extends="standardLayout">
 		<put-attribute name="body" value="/WEB-INF/jsp/providers/index.jsp" />
 	</definition>
+	
+	<definition name="provider/list" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/providers/list.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>

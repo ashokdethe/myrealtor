@@ -1,8 +1,7 @@
 package com.myrealtor.domain.beans;
 
-import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class SearchCriteria extends BaseEntity {
 
 	/**

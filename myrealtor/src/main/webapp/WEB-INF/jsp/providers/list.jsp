@@ -1,8 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
-
 
 
 <div class="section">
@@ -18,11 +15,7 @@
 		<tr>
 			<th>Status</th>
 			<th>Number</th>
-			<th>Price</th>
-			
-			<security:authorize ifAllGranted="ROLE_USER">
-			<th>Action</th>
-			</security:authorize>
+			<th>Price</th>			
 		</tr>
 	</thead>
 	<tbody>
@@ -33,12 +26,6 @@
 <td>${apt.status}</td> 
 <td>${apt.number}</td> 
 <td>${apt.pricePerMonth}</td>
-
-<security:authorize ifAllGranted="ROLE_USER">
-<td><a href='<c:url value="/spring/search/rent?username=${provider.username}&number=${apt.number}"/>'>Rent</a></td>
-</security:authorize>
-
-
 </tr>
 
 </c:forEach>
@@ -48,7 +35,7 @@
 
 
 <br/>
-<a href='<c:url value="/spring/search/search?criteria=${zip}"/>'>Go back to Search Result</a>
+<a href='<c:url value="/spring/provider/index"/>'>Go back</a>
 
 
 </div>
