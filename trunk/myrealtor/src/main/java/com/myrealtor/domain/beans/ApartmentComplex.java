@@ -3,10 +3,12 @@ package com.myrealtor.domain.beans;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.validation.Errors;
 
 @Entity
+@Table(name="apartmentcomplex")
 public class ApartmentComplex extends BaseEntity {
 
 	public static final int MAX_NUMBER_UNITS = 30;

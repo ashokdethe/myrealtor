@@ -1,9 +1,11 @@
 package com.myrealtor.domain.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="securityquestion")
 public class SecurityQuestion extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

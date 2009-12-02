@@ -4,9 +4,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="rent")
 public class Rent extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

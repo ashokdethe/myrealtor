@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="apartment")
 public class Apartment extends BaseEntity {
 	
 	public static final String STATUS_VACANT = "VACANT";
