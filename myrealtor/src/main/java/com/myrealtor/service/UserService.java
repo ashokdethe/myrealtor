@@ -12,10 +12,11 @@ import com.myrealtor.domain.beans.User;
 public interface UserService extends JpaBaseService {
 
 	@Transactional
-	public User store(User user);
+	public User persist(User user);
 	
 	public List<Provider> findAllProviders();
 	
+	public boolean isValidUserName(String username);
 	public User findByUsername(String username);
 	public List<SecurityQuestion> findAllSecurityQuestion();
 	public User findBySecurityQuestion(String answer, String email, long securityQuestionId); 

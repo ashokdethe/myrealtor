@@ -13,6 +13,7 @@ public interface ApartmentService extends JpaBaseService {
 	public void storeApartmentList(List<Apartment> list);
 
 	public List<Apartment> findCachedApartmentList(String criteria);
+	public List<Apartment> findApartmentList(String username);
 	
 
 }

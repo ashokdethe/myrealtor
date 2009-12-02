@@ -32,10 +32,7 @@
 <div id="navcontainer">
 <ul id="navlist">	
 	<li><a href='<c:url value="/spring/intro"/>'>Home</a></li>
-	<li><a href='<c:url value="/spring/search/index"/>' >Search a new Home</a></li>
-	<security:authorize ifAllGranted="ROLE_USER">	
-	<li><a href='<c:url value="/spring/rent/index"/>'>Pay your Rent</a></li>
-	</security:authorize>	
+	<li><a href='<c:url value="/spring/search/index"/>' >Search a new Home</a></li>		
 	<li><a href='<c:url value="/spring/myaccount/index"/>'>My Account</a></li>
 	<security:authorize ifAllGranted="ROLE_PROVIDER">
 	<li><a href='<c:url value="/spring/provider/index"/>'>Providers</a></li>

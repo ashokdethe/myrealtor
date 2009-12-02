@@ -7,8 +7,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
-import org.springframework.validation.Errors;
-
 
 
 @Entity
@@ -28,6 +26,9 @@ public class User extends BaseEntity {
 	
 	
 	protected short enabled = 1;
+	
+//	@Transient
+//	protected boolean validUserName = true;
 
 	
 	@ManyToOne
@@ -44,21 +45,12 @@ public class User extends BaseEntity {
 	protected String confirmPwd;
 	
 	
-//	public Address getAddress() {		
-//		return address;
-//	}
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
-
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
-//		authority.setUsername( username );
 	}
 
 		public String getFirstName() {
@@ -76,46 +68,6 @@ public class User extends BaseEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-//	public String getAddress1() {
-//		return address1;
-//	}
-//
-//	public void setAddress1(String address1) {
-//		this.address1 = address1;
-//	}
-//
-//	public String getAddress2() {
-//		return address2;
-//	}
-//
-//	public void setAddress2(String address2) {
-//		this.address2 = address2;
-//	}
-//
-//	public String getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(String city) {
-//		this.city = city;
-//	}
-//
-//	public String getState() {
-//		return state;
-//	}
-//
-//	public void setState(String state) {
-//		this.state = state;
-//	}
-//
-//	public String getZip() {
-//		return zip;
-//	}
-//
-//	public void setZip(String zip) {
-//		this.zip = zip;
-//	}
 
 	/**
 	 * @return the phone
@@ -214,34 +166,49 @@ public class User extends BaseEntity {
 	public void setMyHome(Apartment myHome) {
 		this.myHome = myHome;
 	}
+	
+	
 
-	public void validateUserForm(Errors errors) {		
-		validatePassword(errors); 		
-		if (lastName.length() < 2) {
-			errors.rejectValue("lastName", "", "Last name needs to be greater than 1 character!");			
-		}
-		boolean isAlpha = true;
-		for (int i = 0; i < username.length(); i++) {
-			if (! Character.isLetterOrDigit( username.charAt( i ) )  ) {
-				isAlpha = false;
-				break;
-			}
-		}
-		
-		if ( ! isAlpha ) {
-			errors.rejectValue("username", "", "Username can only have letter and/or digit!");
-		}
-		
-	}
+//	public boolean getValidUserName() {
+//		return validUserName;
+//	}
+//
+//	public void setValidUserName(boolean isValidUserName) {
+//		this.validUserName = isValidUserName;
+//	}
 
-	public void validatePassword(Errors errors) {
-		//test
-		if ( password == null || confirmPwd == null ) {
-			errors.rejectValue("password", "", "Password or Confirm Password cannot be null!");			
-		} else if (! password.equals(confirmPwd)) {			
-			errors.rejectValue("password", "", "Password does not match!");			
-		}
-	}
+//	public void validateUserForm(Errors errors) {		
+//		validatePassword(errors); 		
+//		if (lastName.length() < 2) {
+//			errors.rejectValue("lastName", "", "Last name needs to be greater than 1 character.");			
+//		}
+//		boolean isAlpha = true;
+//		for (int i = 0; i < username.length(); i++) {
+//			if (! Character.isLetterOrDigit( username.charAt( i ) )  ) {
+//				isAlpha = false;
+//				break;
+//			}
+//		}
+//		
+//		if ( ! isAlpha ) {
+//			log.error("Username can only have letter and/or digit: " + username);
+//			errors.rejectValue("username", "", "Username can only have letter and/or digit.");
+//		}
+//		
+////		if (! validUserName) {
+////			log.error("Duplicate username: " + username);
+////			errors.rejectValue("username", "", "Username is not unique. Please choose another one.");			
+////		}
+//		
+//	}
+//
+//	public void validatePassword(Errors errors) {
+//		if ( password == null || confirmPwd == null ) {
+//			errors.rejectValue("password", "", "Password or Confirm Password cannot be null!");			
+//		} else if (! password.equals(confirmPwd)) {			
+//			errors.rejectValue("password", "", "Password does not match!");			
+//		}
+//	}
 	
 	
 	@Transient

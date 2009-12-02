@@ -15,9 +15,6 @@ public class Apartment extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	
-//	@ManyToOne(optional = false)
-//	@JoinColumns( { @JoinColumn(name = "apartmentcomplex_id", referencedColumnName = "id") })	
-//	protected ApartmentComplex apartmentComplex;
 	
 	@ManyToOne(optional = true)
 	@JoinColumns( { @JoinColumn(name = "provider_id", referencedColumnName = "id") })	

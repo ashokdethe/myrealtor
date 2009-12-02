@@ -6,7 +6,7 @@
 
 
 <div class="section">
-<h3>List Apartment Provider: ${provider.username}</h3>
+<h3>List Apartment Provider: ${provider.email}</h3>
 <h3>Address: ${address}</h3>
 <br/><br/><br/>
 
@@ -48,7 +48,7 @@
 
 
 <br/>
-<a href='<c:url value="/spring/search/search?criteria=${zip}"/>'>Go back to Search Result</a>
+<a href='<c:url value="/spring/search/repeat?criteria=${zip}"/>'>Go back to Search Result</a>
 
 
 </div>

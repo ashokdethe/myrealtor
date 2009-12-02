@@ -4,12 +4,14 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" 
              version="1.0">
    <persistence-unit name="myrealtorDatabase">
+   
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       
       
+      
+      
       <class>com.myrealtor.domain.beans.Address</class> 
-      <class>com.myrealtor.domain.beans.ApartmentComplex</class>           
-      <class>com.myrealtor.domain.beans.Authority</class>
+      <class>com.myrealtor.domain.beans.ApartmentComplex</class>
       <class>com.myrealtor.domain.beans.BaseEntity</class>
       <class>com.myrealtor.domain.beans.Apartment</class>
       <class>com.myrealtor.domain.beans.Provider</class>      
@@ -17,8 +19,14 @@
       
       
       <properties>
-      	 <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+      	 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>      	 
+      	 <property name="hibernate.hbm2ddl.auto" value="create-drop" />      	 
+      	 <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JDBCTransactionFactory" />
       	 
+      	 <!-- Need to use this classic approach because of issue with WL10: 
+      	 Caused by: org.hibernate.QueryException: ClassNotFoundException: org.hibernate.hql.ast.HqlToken
+      	  -->
+      	 <property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
       	 
       	 <!--
       	 <property name="hibernate.hbm2ddl.auto" value="create" /> 

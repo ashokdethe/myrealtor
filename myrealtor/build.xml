@@ -11,6 +11,13 @@
 		<copy file="${dest.dir}/myrealtor_domain.jar" tofile="${aptmanagement.dir}/myrealtor_domain.jar" overwrite="true" />
 
 	</target>
+	
+	<target name="war" >
+		<mkdir dir="dist"/>
+		<war destfile="dist/myrealtor.war" basedir="src/main/webapp" webxml="src/main/webapp/WEB-INF/web.xml" >
+			<fileset dir="src/main/webapp" excludesfile="src/main/webapp/WEB-INF/web.xml"></fileset>
+		</war>	
+	</target>
 
 	
 </project>

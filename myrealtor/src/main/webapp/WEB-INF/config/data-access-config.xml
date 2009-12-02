@@ -2,14 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/tx
-           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	
 
 	<!-- Instructs Spring to perfrom declarative transaction management on annotated classes -->
 	<tx:annotation-driven />
+	
+	<!-- Scans for application @Components to deploy -->
+	<context:component-scan base-package="com.myrealtor" />
 
 	<!-- Drives transactions using local JPA APIs -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -25,35 +33,35 @@
 	</bean>
 
 
-
-
-	<!-- Deploys a in-memory datasource populated -->
-	<!-- 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />		
-		 
-		<property name="url" value="jdbc:hsqldb:mem:booking" />		
-		<property name="url" value="jdbc:hsqldb:hsql://localhost/myrealtor" />
-				
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>
-	 -->
 	
 	
 		   	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	
+		<!-- HSQLDB 
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
 		<property name="url" value="jdbc:hsqldb:hsql://localhost/myrealtor" />				
 		<property name="username" value="sa" />
 		<property name="password" value="" />
-		
-		<!-- MySQL 		
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/myrealtor" />				
-		<property name="username" value="myrealtor" />
-		<property name="password" value="myrealtor" />		
 		 -->
+		
+		<!-- MySQL dev
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/ea1099" />				
+		<property name="username" value="ea1099" />
+		<property name="password" value="ea1099" />
+		 -->
+
+		
+		
+		
+		<!-- MySQL prod
+		 -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://mysql.cs.txstate.edu:3306/ea1099" />				
+		<property name="username" value="ea1099" />
+		<property name="password" value="pWNVWSCSU" />
+		
 				
 		<property name="initialSize" value="0" />
 		<property name="maxActive" value="5" />

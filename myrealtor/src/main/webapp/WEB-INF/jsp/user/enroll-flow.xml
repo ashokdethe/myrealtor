@@ -25,28 +25,30 @@
 	</on-start>
 	
 	
-	<view-state id="userForm" model="user" >	
+	<view-state id="userForm" model="user" >
 		<binder>
 			<binding property="question" required="true" converter="securityQuestionConverter" />
 			<binding property="firstName" required="true" />
 			<binding property="lastName" required="true" />
-			<binding property="username" required="true" />
-			
-			<!--
-			<binding property="role" required="true" /> 
-			<binding property="authority" required="true" converter="authorityConverter" />
-			 -->
+			<binding property="username" required="true" />			
 			<binding property="email" required="true" />
 			<binding property="password" required="true" />
 			<binding property="confirmPwd" required="true" />			
 			<binding property="securityAnswer" required="true" />			
 		</binder>
-		<transition on="proceed" to="askForAddress"  >					
+		
+				
+		<transition on="proceed" to="askForAddress"  >
+		<!-- 
+			<evaluate expression="userService.isValidUserName(user.username)" result="flowScope.user.validUserName"  />
+		-->
 		</transition>
 		<transition on="cancel" to="cancel" bind="false" /> 
 	</view-state>
 	
-	<decision-state id="askForAddress">
+	
+	
+	<decision-state id="askForAddress">		
 		<if test="user instanceof com.myrealtor.domain.beans.Provider" then="apartmentComplexForm" else="storeUserAction" />	
 	</decision-state>	
 	
@@ -62,10 +64,8 @@
 			<binding property="pricePerMonth" required="true" />
 		</binder>
 		
-		<transition on="confirm" to="urlForm" >
-		
-			<set name="user.apartmentComplex" value="flowScope.apartmentComplex"></set>
-						
+		<transition on="confirm" to="urlForm" >		
+			<set name="user.apartmentComplex" value="flowScope.apartmentComplex"></set>						
 		</transition>
 							
 		<transition on="cancel" to="cancel" bind="false" />
@@ -77,10 +77,8 @@
 			<binding property="url" required="true" />			
 		</binder>
 		
-		<transition on="confirm" to="userEnrollmentSuccess" >		
-			
-			<evaluate expression="apartmentManagementServiceImpl.registerProvider(user)" />
-						
+		<transition on="confirm" to="userEnrollmentSuccess" >
+			<evaluate expression="apartmentManagementServiceImpl.registerProvider(user)" />						
 		</transition>
 							
 		<transition on="cancel" to="cancel" bind="false" />
@@ -95,6 +93,7 @@
 	 
 	<end-state id="userEnrollmentSuccess" commit="true" view="userEnrollmentSuccess">		
 	</end-state>	 
+
 
 	<end-state id="cancel" view="externalRedirect:servletRelative:/login" />
 	
