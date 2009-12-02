@@ -28,15 +28,14 @@ public class ApartmentManagementServiceImpl implements ApartmentManagementServic
 
 	@Override
 	public void registerProvider(Provider provider) throws Exception {
-		log.debug("registerProvider: " + provider);
+		log.debug("registerProvider: " + provider);		
 		
-		//TODO validate address
 		geoCode.findCoordinate( provider.getApartmentComplex().getAddress() );
 		
 		AxisRPCClient axisClient = new AxisRPCClient( provider.getUrl() );
 		axisClient.registerProvider(provider);
 
-		userService.store(provider);		
+		userService.persist(provider);		
 	}
 	
 

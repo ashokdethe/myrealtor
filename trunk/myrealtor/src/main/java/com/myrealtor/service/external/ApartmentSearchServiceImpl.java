@@ -61,15 +61,15 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 
 		try {
 			ApartmentHTMLParser htmlParser = new ApartmentRatingsWebsiteParser();
-			// List<Apartment> list = htmlParser.parse( new
-			// URL("http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4")
-			// );
+			
+			// List<Apartment> list = htmlParser.parse( new URL("http://www.apartmentratings.com/rate/SearchResults?action=post&query=78727&x=20&y=4") );
+			
 			list = htmlParser.parse(new URL("http://www.apartmentratings.com/rate/SearchResults?action=post&x=20&y=4&query=" + criteria.getCriteria()));
 			log.debug("List<Apartment> list: " + list);
 			geoCode.populateCoordinates(list);
 
 			// Check if it was already cached
-			List<Apartment> cachedList = apartmentService.findCachedApartmentList(criteria.getCriteria());
+			List<Apartment> cachedList = apartmentService.findCachedApartmentList( criteria.getCriteria() );
 			if (cachedList == null || cachedList.isEmpty()) {
 				log.info("Caching apartments website " + criteria.getCriteria());
 				apartmentService.storeApartmentList(list);
@@ -80,9 +80,9 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 			isError = true;
 		}
 
-		if (isError) {
+		if ( isError || list.isEmpty() ) { //Try to get the data from cache
 			log.warn("Trying cache for apartment website " + criteria.getCriteria());
-			list = apartmentService.findCachedApartmentList(criteria.getCriteria());
+			list = apartmentService.findCachedApartmentList( criteria.getCriteria() );
 		}
 
 		return list;
@@ -125,13 +125,17 @@ public class ApartmentSearchServiceImpl implements ApartmentSearchService {
 	public void rent(User user, String providerName, String aptNumber) throws Exception { 
 		log.debug("rent username: " + providerName);
 		Provider provider = (Provider) userService.findByUsername(providerName);
-		AxisRPCClient axis = new AxisRPCClient(provider.getUrl());
+		AxisRPCClient axis = new AxisRPCClient( provider.getUrl() );
 		
 		Apartment apt = axis.rent(provider.getUsername(), aptNumber);
 		Rent rent = new Rent();
 		rent.setUser( user );
 		
-		rent.setApartment(apt);		
+		rent.setApartment(apt);
+		
+		apt.setOwner(provider);
+		apt.setAddress( provider.getApartmentComplex().getAddress() );
+		
 		userService.store( rent );
 	}
 

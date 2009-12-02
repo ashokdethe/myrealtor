@@ -6,8 +6,8 @@
 <br/><br/><br/>
 <ul>
 	<security:authorize ifAllGranted="ROLE_USER">
-	<li><a href='<c:url value="/spring/myaccount/"/>' >My apartments</a></li>
+	<li><a href='<c:url value="/spring/myaccount/list"/>' >My apartments</a></li>
 	</security:authorize>		
-	<li><a href='<c:url value="/spring/myaccount/"/>'>Update Personal Info</a></li>
+	<li><a href='<c:url value="/spring/myaccount/update"/>'>Update Personal Info</a></li>
 </ul>
 </div>

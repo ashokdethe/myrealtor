@@ -1,2 +1,2 @@
-REM D:\mysql-5.1.33-win32\bin\mysql -u root
-D:\mysql-5.1.33-win32\bin\mysql -u myrealtor -p
+C:\mysql-5.1.39-win32\bin\mysql -u root
+REM C:\mysql-5.1.39-win32\bin\mysql -u myrealtor -p

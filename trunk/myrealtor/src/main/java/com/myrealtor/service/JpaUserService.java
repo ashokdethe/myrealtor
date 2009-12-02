@@ -20,6 +20,17 @@ public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 	
 	private static final long serialVersionUID = 1L;
 	
+	public boolean isValidUserName(String username) {
+		boolean ret = false;
+		try {
+			findByUsername(username);
+		} catch (Exception e) {
+			log.info("Username is valid: " + username );
+			ret = true;
+		}
+		return ret;
+	}
+	
 	public User findByUsername(String username) {
 		Query query = em.createQuery("select obj from User obj where obj.username = :username ");
 		query.setParameter("username", username);
@@ -38,7 +49,7 @@ public class JpaUserService extends JpaBaseServiceImpl implements UserService {
 	
 
 	@Transactional
-	public User store(User user) {		
+	public User persist(User user) {		
 		em.persist(user);
 		return user;
 	}	

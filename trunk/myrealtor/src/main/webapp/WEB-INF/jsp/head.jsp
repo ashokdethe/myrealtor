@@ -19,7 +19,11 @@
     <script type="text/javascript" src="<c:url value="/resources/spring/Spring.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/spring/Spring-Dojo.js" />"></script>
     
+    <%-- 
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA0-70fEREB0bsUCfT2s76ZxTwM0brOpm-All5BF6PoaKBxRWWERT53KrunpiWSWcDWKLphA0P7n2XZw" type="text/javascript"></script>
+    --%>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;<c:out value='${google_key}' />" type="text/javascript"></script>
+    
     
     <script type="text/javascript">
     dojo.require("dijit.form.Button");

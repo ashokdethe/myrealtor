@@ -31,12 +31,16 @@ public class SearchController extends BaseController {
 		model.addAttribute("criteria", new SearchCriteria());
 	}
 	
-	@RequestMapping
+	@RequestMapping(method = RequestMethod.GET)
+	public String repeat(@ModelAttribute SearchCriteria criteria, Model model, WebRequest request) throws Exception {
+		return search(criteria, model, request);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
 	public String search(@ModelAttribute SearchCriteria criteria, Model model, WebRequest request) throws Exception {
 		log.debug("search");
 		String view = "search/search";
 		
-		//TODO need to validate zip code
 		SearchResult result = apartmentSearchService.search( criteria );
 		
 		if (result.getApartmentList() == null || result.getApartmentList().size() == 0) {
@@ -67,7 +71,7 @@ public class SearchController extends BaseController {
 		
 		User user = userService.findByUsername( request.getUserPrincipal().getName() );		
 		apartmentSearchService.rent(user, username, aptNumber);
-		return "redirect:/spring/myaccount/index";
+		return "redirect:/spring/myaccount/list";
 	}
 
 }

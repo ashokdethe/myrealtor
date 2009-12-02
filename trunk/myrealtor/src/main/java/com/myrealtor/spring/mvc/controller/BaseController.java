@@ -10,6 +10,7 @@ import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.web.context.request.WebRequest;
 
 import com.myrealtor.domain.beans.User;
+import com.myrealtor.service.ApartmentService;
 import com.myrealtor.service.UserService;
 
 public class BaseController {
@@ -21,7 +22,10 @@ public class BaseController {
 	
 	@Resource(name = "userService")
 	protected UserService userService;
-
+	
+	@Resource(name = "apartmentService")
+	protected ApartmentService apartmentService;
+	
 	protected void setupCustomer(WebRequest request) {
 		org.springframework.security.userdetails.User userdetails = (org.springframework.security.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		log.info("Trying to load user from DB " + userdetails.getUsername() + ".........");

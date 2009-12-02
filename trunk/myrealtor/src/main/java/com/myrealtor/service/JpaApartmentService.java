@@ -29,8 +29,19 @@ public class JpaApartmentService extends JpaBaseServiceImpl implements Apartment
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Apartment> findCachedApartmentList(String criteria) {
-		Query query = em.createQuery("select obj from Apartment obj where obj.address.zip = :zip and readOnly = 'true' ");
+		log.debug("findCachedApartmentList criteria: " + criteria);
+		Query query = em.createQuery("select obj from Apartment obj where obj.address.zip = :zip and readOnly = :readOnly ");
 		query.setParameter("zip", criteria);
+		query.setParameter("readOnly", true);
+		return query.getResultList();
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Apartment> findApartmentList(String username) {
+		Query query = em.createQuery("select obj.apartment from Rent obj inner join fetch obj.apartment.owner owner where obj.user.username = :username ");
+		query.setParameter("username", username);
 		return query.getResultList();
 	}
 	

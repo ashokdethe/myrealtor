@@ -52,11 +52,9 @@
 			<list>
 				<value>/WEB-INF/layouts/layouts.xml</value>
 				<value>/WEB-INF/views.xml</value>
-				<value>/WEB-INF/jsp/user/views.xml</value>
-				<value>/WEB-INF/jsp/rent/views.xml</value>
+				<value>/WEB-INF/jsp/user/views.xml</value>				
 				<value>/WEB-INF/jsp/search/views.xml</value>
-				<value>/WEB-INF/jsp/myaccount/views.xml</value>
-				<value>/WEB-INF/jsp/tools/views.xml</value>
+				<value>/WEB-INF/jsp/myaccount/views.xml</value>				
 				<value>/WEB-INF/jsp/providers/views.xml</value>
 			</list>
 		</property>

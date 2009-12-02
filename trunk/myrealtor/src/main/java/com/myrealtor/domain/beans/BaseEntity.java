@@ -15,26 +15,13 @@ import org.apache.commons.logging.LogFactory;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 	
-	public static final String CODE_VERSION = "0.0.8";
+	public static final String CODE_VERSION = "0.0.9";
 	
 	@Transient
 	protected final Log log = LogFactory.getLog(getClass());
 
 	private static final long serialVersionUID = 1L;
 	
-	//private static SimpleDateFormat timeFormat;
-	
-	
-//	@Transient
-//	protected static SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-//	
-//	@Transient
-//	protected static DecimalFormat decimalFormat = new DecimalFormat("0000"); 
-//	
-//	
-//	@Transient
-//	protected static Random random = new Random( (new Date()).getTime() );
-
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -128,57 +115,4 @@ public class BaseEntity implements Serializable {
 	}
 	
 	
-	
-	
-	/*
-
-
-	public static synchronized SimpleDateFormat getTimeFormat() {
-		if (timeFormat == null) {
-			timeFormat = new SimpleDateFormat("HH:mm");
-			timeFormat.setLenient(false);			
-		}
-		return timeFormat;
-	}
-
-	
-	protected Date setupDateTime(Date date, String time) throws ParseException{
-		if (date != null && time != null) {
-			Calendar calTime = Calendar.getInstance();			
-			calTime.setTime(getTimeFormat().parse(time));			
-			date = getDateWithSpecificTime(date, calTime.get(Calendar.HOUR_OF_DAY), calTime.get(Calendar.MINUTE)  );
-		}
-		return date;
-	}
-
-
-
-	protected Date getDateWithSpecificTime(Date date, int hour, int minute) {		
-		return getDateWithSpecificTime(date, 0, hour, minute);
-	}
-	
-	protected Date getDateWithSpecificTime(Date date, int daysToAdd, int hour, int minute) {
-		Calendar cal = Calendar.getInstance();				
-		cal.setTime(date);
-		cal.add(Calendar.DAY_OF_YEAR, daysToAdd);
-		cal.set(Calendar.HOUR_OF_DAY, hour);
-		cal.set(Calendar.MINUTE, minute);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		return cal.getTime();
-	}
-	*/
-	
-	/*
-	protected int getRandomInt(int limit) {
-		return Math.abs(random.nextInt()) % (limit + 1);
-	}
-	
-	protected String getRandomStr() {
-		int num = getRandomInt(9999);		
-		return decimalFormat.format(num);
-	}
-	*/
-	
-
 }

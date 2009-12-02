@@ -12,5 +12,9 @@ public interface GeoCodeService extends BaseService {
 	
 	public void populateCoordinates(List<Apartment> apartmentList) throws Exception ;
 	public void findCoordinate(Address address) throws Exception;
+	
+	public String getKey();
+	public void setKey(String key);
+
 
 }

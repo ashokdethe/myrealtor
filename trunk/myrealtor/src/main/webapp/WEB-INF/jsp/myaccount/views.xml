@@ -9,5 +9,13 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/myaccount/index.jsp" />
 	</definition>
 	
+	<definition name="myaccount/update" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/myaccount/userForm.jsp" />
+	</definition>
+	
+	<definition name="myaccount/list" extends="standardLayout">
+		<put-attribute name="body" value="/WEB-INF/jsp/myaccount/list.jsp" />
+	</definition>	
+	
 	
 </tiles-definitions>
