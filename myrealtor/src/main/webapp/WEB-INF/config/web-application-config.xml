@@ -21,7 +21,12 @@
 	
 	
 	<bean id="googleGeoCodeService" class="com.myrealtor.service.external.GoogleGeoCodeService">
-		<property name="key" value="key=ABQIAAAA0-70fEREB0bsUCfT2s76ZxTwM0brOpm-All5BF6PoaKBxRWWERT53KrunpiWSWcDWKLphA0P7n2XZw" />		
+	<!-- localhost 
+		<property name="key" value="key=ABQIAAAA0-70fEREB0bsUCfT2s76ZxTwM0brOpm-All5BF6PoaKBxRWWERT53KrunpiWSWcDWKLphA0P7n2XZw" />
+	 -->
+	 <!--  Key for http://147.26.101.103 -->
+	 <property name="key" value="key=ABQIAAAA0-70fEREB0bsUCfT2s76ZxTa70Ksa0qBToNICBemmDCjA4KD_BTmBFI1lwILQowVlx4kJldoYl5GyQ" />
+												
 	</bean>
 	
 	

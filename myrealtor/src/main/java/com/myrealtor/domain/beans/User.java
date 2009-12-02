@@ -10,8 +10,7 @@ import javax.persistence.UniqueConstraint;
 
 
 @Entity
-//@Table(name="Users")
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
+@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
 public class User extends BaseEntity {
 	
 	public static final String ROLE_USER = "ROLE_USER";

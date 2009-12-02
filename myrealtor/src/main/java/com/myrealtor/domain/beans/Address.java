@@ -3,9 +3,11 @@ package com.myrealtor.domain.beans;
 import java.util.StringTokenizer;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="address")
 public class Address extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
