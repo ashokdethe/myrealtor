@@ -11,7 +11,7 @@
 	<ul>
 		<li>Register your apartment to rent</li>
 		<li>Find a new home</li>
-		<li>Pay your month rental</li>
+		<li>Rent an apartment</li>
 		<li>And much more</li>		
 	</ul>
 	<br/><br/><br/><br/><br/><br/>
