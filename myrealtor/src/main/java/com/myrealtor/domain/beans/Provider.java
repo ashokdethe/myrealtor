@@ -9,7 +9,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Provider extends User {
 	
-	public static final String DEFAULT_URL = "http://127.0.0.1:8080/apartment_management_webservice/services/webservice";
+	//public static final String DEFAULT_URL = "http://127.0.0.1:8080/apartment_management_webservice/services/webservice";
+	public static final String DEFAULT_URL = "http://127.0.0.1:7001/apartment_management_webservice/services/webservice";
+	
 
 	public static final String PROVIDER_TYPE_PARSER = "TYPE_PARSER";
 	public static final String PROVIDER_TYPE_WEBSERVICE = "TYPE_WEBSERVICE";

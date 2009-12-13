@@ -1,7 +1,24 @@
-<project name="myrealtor" basedir="." default="jar_domain">
+<project name="myrealtor" basedir="." default="war">
 	
 	<property name="dest.dir" value="dist" />
 	<property name="aptmanagement.dir" value="C:/workspace-eclipse-jee-galileo-win32/apartment_management_webservice/WebContent/WEB-INF/lib" />
+	<property name="dest.dir.classes" value="src/main/webapp/WEB-INF/classes" />
+	<property name="src.dir.resources" value="src/main/resources" />
+	<property name="src.dir.java" value="src/main/java" />
+	<property name="lib.dir" value="src/main/webapp/WEB-INF/lib" />
+	
+	
+	<path id="classpath">
+			<fileset dir="${lib.dir}">
+				<include name="*.jar" />
+			</fileset>
+			
+			<fileset dir="lib">
+				<include name="*.jar" />
+			</fileset>		
+	</path>
+
+	
 	
 	<target name="jar_domain" >		
 		<mkdir dir="${dest.dir}"/>
@@ -12,7 +29,23 @@
 
 	</target>
 	
-	<target name="war" >
+	<target name="compile" >
+		<delete dir="${dest.dir.classes}"></delete>
+		<mkdir dir="${dest.dir.classes}"/> 
+		<copy todir="${dest.dir.classes}">
+			<fileset dir="${src.dir.resources}" includes="**/*.*" excludes=".svn"></fileset>
+		</copy>
+		
+		<javac destdir="${dest.dir.classes}" debug="true" deprecation="false" optimize="false" failonerror="true">
+			<src path="${src.dir.java}" />
+			<classpath refid="classpath" />
+		</javac>		
+	
+	</target>
+
+	
+	<target name="war" depends="compile">
+		<delete file="dist/myrealtor.war" failonerror="false"></delete>
 		<mkdir dir="dist"/>
 		<war destfile="dist/myrealtor.war" basedir="src/main/webapp" webxml="src/main/webapp/WEB-INF/web.xml" >
 			<fileset dir="src/main/webapp" excludesfile="src/main/webapp/WEB-INF/web.xml"></fileset>
