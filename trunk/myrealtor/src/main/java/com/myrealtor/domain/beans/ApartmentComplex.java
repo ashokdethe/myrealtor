@@ -20,20 +20,10 @@ public class ApartmentComplex extends BaseEntity {
 	protected double pricePerMonth;
 	
 	
-//	@ManyToOne(optional = false)
-//	@JoinColumns( { @JoinColumn(name = "provider_id", referencedColumnName = "id") })	
-//	protected Provider owner;
-	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected Address address = new Address();
 	
-
-	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartmentComplex")
-//	protected Set<Apartment> unitSet;
-
-
 
 	public String getName() {
 		return name;
@@ -59,13 +49,6 @@ public class ApartmentComplex extends BaseEntity {
 		this.pricePerMonth = pricePerMonth;
 	}
 
-//	public Provider getOwner() {
-//		return owner;
-//	}
-//
-//	public void setOwner(Provider owner) {
-//		this.owner = owner;
-//	}
 
 	public Address getAddress() {
 		return address;
@@ -75,15 +58,7 @@ public class ApartmentComplex extends BaseEntity {
 		this.address = address;
 	}
 
-	/*
-	public Set<Apartment> getUnitSet() {
-		return unitSet;
-	}
 
-	public void setUnitSet(Set<Apartment> unitSet) {
-		this.unitSet = unitSet;
-	}
-	*/
 		
 	public void validateApartmentComplexForm(Errors errors) {		
 		 		

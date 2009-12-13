@@ -19,7 +19,9 @@ public class AxisRPCClientTest {
 		//AxisRPCClient a = new AxisRPCClient( Provider.DEFAULT_URL );
 		
 		for (int i = 0; i < 10; i++) {
-			AxisRPCClient a = new AxisRPCClient( Provider.DEFAULT_URL );
+			//AxisRPCClient a = new AxisRPCClient( Provider.DEFAULT_URL );
+			AxisRPCClient a = new AxisRPCClient( "http://win2003:7001/apartment_management_webservice/services/webservice" );
+			
 			System.out.println( "\n\n\nStart Axis test " + (i + 1) );
 			
 			List<Apartment> l = a.findApartmentList("p1", "78727");

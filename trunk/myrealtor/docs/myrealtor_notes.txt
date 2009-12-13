@@ -2,6 +2,29 @@ Our Design:
 - Add data heterogenity
 
 
+Requires Sun JDK 1.6 to compile
+
+Requires to configure a datasource in Weblogic 10.3
+Default datasource jndi is mysql/ea1099DS
+(Add steps here)
+
+It's setup for MySQL both application. Another DB requires changes in the dataccess config file.
+
+myrealtor dataaccess Spring config file: data-access-config.xml
+apartment-management-webservice Hibernate config file: hibernate.cfg.xml
+
+
+Database is setup to drop and recreate DB every time Weblogic restarts
+
+
+Know bugs:
+- Update provider email will only change local DB. Need to implement SOAP method to change external DB in apartment_management_webservice
+- Need to use know IP address because Google map key. If need to use different IP, it will be necessary to create a key in this address:
+http://code.google.com/apis/maps/signup.html
+
+Change the file web-application-config.xml (bean id=googleGeoCodeService)
+
+
 
 Did the group document the motivation? does the motivation make sense?
 - Display information in a map. Easy to locate the apartment in some area.
